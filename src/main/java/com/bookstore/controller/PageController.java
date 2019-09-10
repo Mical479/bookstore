@@ -5,7 +5,6 @@ import com.bookstore.pojo.BookInfo;
 import com.bookstore.service.BookCatService;
 import com.bookstore.service.BookInfoService;
 import com.github.pagehelper.PageInfo;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -89,6 +88,14 @@ public class PageController {
         return modelAndView;
     }
 
+    /**
+     * 跳转到商品列表页面
+     * @param modelAndView
+     * @param catId
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @RequestMapping("/shop-list")
     public ModelAndView getBooks(ModelAndView modelAndView, @RequestParam(value = "catId", defaultValue = "0") int catId,
                                  @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
@@ -120,5 +127,14 @@ public class PageController {
         modelAndView.addObject("bookCats", bookCats);
         modelAndView.setViewName("shop-list");
         return modelAndView;
+    }
+
+    /**
+     * 跳转到登录页面
+     * @return
+     */
+    @RequestMapping("/login")
+    public String goLoginPage(){
+        return "login";
     }
 }

@@ -15,7 +15,9 @@ var Auth = {
 		lowin_register: document.querySelector('.lowin-register'),
 		lowin_footer: document.querySelector('.lowin-footer'),
 		box: document.getElementsByClassName('lowin-box'),
-		option: {}
+		option: {},
+		myEmail: document.getElementById("myEmail"),
+		login_title: document.getElementById("login-title"),
 	},
 	register(e) {
 		Auth.vars.lowin_login.className += ' lowin-animated';
@@ -38,7 +40,7 @@ var Auth = {
 		setTimeout(() => {
 			Auth.vars.lowin_register.style.display = 'none';
 		}, 500);
-		
+
 		setTimeout(() => {
 			Auth.vars.lowin_register.classList.remove('lowin-animated-flipback');
 			Auth.vars.lowin_login.classList.remove('lowin-animatedback');
@@ -57,11 +59,10 @@ var Auth = {
 			Auth.vars.password_group.style.height = 0;
 			Auth.vars.password_group.style.margin = 0;
 		}, 100);
-		
-		Auth.vars.login_btn.innerText = '忘记密码';
+
+		Auth.vars.login_btn.value = '忘记密码';
 
 		Auth.setHeight(Auth.vars.lowin_wrapper_height - Auth.vars.password_group_height);
-		Auth.vars.lowin_login.querySelector('form').setAttribute('action', Auth.vars.option.forgot_url);
 
 		e.preventDefault();
 	},
@@ -81,11 +82,10 @@ var Auth = {
 			Auth.vars.password_group.classList.remove('lowin-animated-back');
 		}, 1000);
 
-		Auth.vars.login_btn.innerText = '登陆';
-		Auth.vars.lowin_login.querySelector('form').setAttribute('action', Auth.vars.option.login_url);
+		Auth.vars.login_btn.innerText = '登录';
 
 		Auth.setHeight(Auth.vars.lowin_wrapper_height);
-		
+
 		e.preventDefault();
 	},
 	setHeight(height) {
@@ -105,7 +105,6 @@ var Auth = {
 		Auth.vars.lowin_wrapper_height = Auth.vars.lowin_wrapper.offsetHeight;
 
 		Auth.vars.option = option;
-		Auth.vars.lowin_login.querySelector('form').setAttribute('action', option.login_url);
 
 		var len = Auth.vars.box.length - 1;
 
@@ -116,7 +115,13 @@ var Auth = {
 		}
 
 		Auth.vars.forgot_link.addEventListener("click", (e) => {
-			Auth.forgot(e);
+			if(Auth.vars.myEmail.value == ""){
+				Auth.vars.login_title.innerText = "请先输入邮箱";
+				Auth.vars.login_title.setAttribute('style', 'color: red;');
+            }else{
+			    Auth.forgot(e);
+                Auth.vars.login_title.innerText = "欢迎访问本书城";
+            }
 		});
 
 		Auth.vars.register_link.addEventListener("click", (e) => {

@@ -149,7 +149,7 @@
                                                 <div class="setting__menu">
                                                     <span><a href="#">我的账户</a></span>
                                                     <span><a href="#">我的购物车</a></span>
-                                                    <span><a href="/login.jsp">登录</a></span>
+                                                    <span><a href="/login">登录</a></span>
                                                     <span><a href="#">注册</a></span>
                                                 </div>
                                             </div>

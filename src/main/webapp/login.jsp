@@ -20,18 +20,16 @@
         <div class="lowin-box lowin-login">
             <div class="lowin-box-inner">
                 <form>
-                    <p>欢迎访问本书城</p>
+                    <p id="login-title">欢迎访问本书城</p>
                     <div class="lowin-group">
-                        <label>账户 <a href="#" class="login-back-link">登陆?</a></label>
-                        <input type="email" autocomplete="email" name="email" class="lowin-input">
+                        <label>账户 <a href="#" class="login-back-link">登录?</a></label>
+                        <input type="email" autocomplete="email" name="email" class="lowin-input" id="myEmail">
                     </div>
                     <div class="lowin-group password-group">
                         <label>密码 <a href="#" class="forgot-link">忘记密码?</a></label>
-                        <input type="password" name="password" autocomplete="current-password" class="lowin-input">
+                        <input type="password" name="password" autocomplete="current-password" class="lowin-input" id="myPass">
                     </div>
-                    <button class="lowin-btn login-btn">
-                        登陆
-                    </button>
+                    <input type="button" class="lowin-btn login-btn" value="登录" id="login">
 
                     <div class="text-foot">
                         Don't have an account? <a href="" class="register-link">注册</a>
@@ -43,25 +41,22 @@
         <div class="lowin-box lowin-register">
             <div class="lowin-box-inner">
                 <form>
-                    <p>创建账户</p>
+                    <p id="regist-title">创建账户</p>
                     <div class="lowin-group">
                         <label>账户名</label>
-                        <input type="text" name="name" autocomplete="name" class="lowin-input">
+                        <input type="text" name="name" autocomplete="name" class="lowin-input" id="regist-name">
                     </div>
                     <div class="lowin-group">
                         <label>邮箱</label>
-                        <input type="email" autocomplete="email" name="email" class="lowin-input">
+                        <input type="email" autocomplete="email" name="email" class="lowin-input" id="regist-email">
                     </div>
                     <div class="lowin-group">
                         <label>密码</label>
-                        <input type="password" name="password" autocomplete="current-password" class="lowin-input">
+                        <input type="password" name="password" autocomplete="current-password" class="lowin-input" id="regist-pass">
                     </div>
-                    <button class="lowin-btn">
-                        重新登陆
-                    </button>
-
+                    <input class="lowin-btn" type="button" value="注册" id="regist-bt">
                     <div class="text-foot">
-                        Already have an account? <a href="" class="login-link">登陆</a>
+                        Already have an account? <a href="" class="login-link">登录</a>
                     </div>
                 </form>
             </div>
@@ -73,12 +68,57 @@
     </footer>
 </div>
 
+<script src="/js/vendor/jquery-3.2.1.min.js"></script>
 <script src="/js/auth.js"></script>
 <script>
     Auth.init({
-        login_url: '#login',
-        forgot_url: '#forgot'
+        login_url: '/login/doLogin',
+        forgot_url: '/forgot_pass'
     });
+    $(function () {
+        $("#login").click(function () {
+            $.ajax({
+                url: "/login/doLogin",
+                data: {
+                    email: $("#myEmail").val(),
+                    password: $("#myPass").val()
+                },
+                type: "POST",
+                success: function (data) {
+                    if (data.code == 4){
+                        window.location.href = "/index";
+                    }else {
+                        $("#login-title").html(data.msg);
+                        $("#login-title").attr("style", "color: red");
+                    }
+                }
+            });
+        });
+
+        $("#regist-bt").click(function () {
+            $.ajax({
+                url: "/login/register",
+                data: {
+                    email: $("#regist-email").val(),
+                    name: $("#regist-name").val(),
+                    password: $("#regist-pass").val()
+                },
+                type: "POST",
+                success: function (data) {
+                    if (data.code == 7){
+                        $("#regist-title").html(data.msg + "，正在跳转");
+                        $("#regist-title").attr("style", "color: blue");
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 3000);
+                    }else {
+                        $("#regist-title").html(data.msg);
+                        $("#regist-title").attr("style", "color: red");
+                    }
+                }
+            });
+        });
+    })
 </script>
 </body>
 </html>
