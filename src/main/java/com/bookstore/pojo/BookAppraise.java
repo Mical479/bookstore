@@ -13,7 +13,7 @@ public class BookAppraise implements Serializable {
     private int id;
     private BookUser bookUser;
     private BookUser replyUser;
-    private BookInfo bookInfo;
+    private int bookId;
     private Date talkTime;
     private String talkContent;
 
@@ -41,12 +41,12 @@ public class BookAppraise implements Serializable {
         this.replyUser = replyUser;
     }
 
-    public BookInfo getBookInfo() {
-        return bookInfo;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setBookInfo(BookInfo bookInfo) {
-        this.bookInfo = bookInfo;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     public Date getTalkTime() {

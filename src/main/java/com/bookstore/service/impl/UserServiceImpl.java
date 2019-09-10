@@ -6,6 +6,8 @@ import com.bookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /**
  * 类 名 称：UserServiceImpl
  * 类 描 述：用户相关的服务层实现类
@@ -34,6 +36,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void registerUser(BookUser bookUser) {
+        bookUser.setCreateTime(new Date());
         userMapper.insertUser(bookUser);
     }
 }
