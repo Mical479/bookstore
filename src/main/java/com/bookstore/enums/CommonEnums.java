@@ -15,7 +15,9 @@ public enum CommonEnums {
     EMAIL_HAVE_BEEN_REGISTERED(5, "email已经被注册"),
     USER_NAME_HAVE_BEEN_REGISTERED(6, "用户名已经被注册"),
     REGISTER_SUCCESS(7, "注册成功"),
-    REGISTER_FAILED(8, "注册失败")
+    REGISTER_FAILED(8, "注册失败"),
+    ADD_SHOP_TO_CART_SUCCESS(9, "加入购物车成功"),
+    NOT_LOGIN(10, "未登录")
     ;
 
     private Integer code;

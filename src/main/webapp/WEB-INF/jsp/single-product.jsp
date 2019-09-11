@@ -151,7 +151,7 @@
                                                     <div class="switcher-currency-trigger">
                                                         <div class="setting__menu">
                                                             <span><a href="#">我的账户</a></span>
-                                                            <span><a href="/pucharse.jsp">我的购物车</a></span>
+                                                            <span><a href="/bookstore/shoppingcart">我的购物车</a></span>
                                                             <span><a href="#">退出</a></span>
                                                         </div>
                                                     </div>

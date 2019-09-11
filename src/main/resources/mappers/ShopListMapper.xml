@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookstore.mapper.ShopListMapper">
+    <resultMap id="myMap" type="com.bookstore.pojo.ShopList">
+        <id property="shopId" column="shop_id" />
+        <result property="userId" column="user_id" />
+        <result property="joinShopTime" column="join_shop_time" />
+        <association property="bookInfo" column="book_id" select="com.bookstore.mapper.BookInfoMapper.selectByBookId"
+                     javaType="com.bookstore.pojo.BookInfo" />
+    </resultMap>
+    <insert id="insertShops" parameterType="com.bookstore.pojo.ShopList">
+        insert into shop_list(user_id, book_id, book_number, join_shop_time) values
+        (#{userId}, #{bookInfo.id}, #{bookNumber}, #{joinShopTime})
+    </insert>
+
+    <select id="selectShopListByUserId" resultMap="myMap">
+        select * from shop_list where user_id = #{userId}
+    </select>
+</mapper>

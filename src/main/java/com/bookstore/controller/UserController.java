@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * 类 名 称：UserController
@@ -87,6 +88,22 @@ public class UserController {
             return new CommonVO(CommonEnums.REGISTER_SUCCESS);
         } catch (Exception e) {
             return new CommonVO(CommonEnums.REGISTER_FAILED);
+        }
+    }
+
+    /**
+     * 购物车网页的跳转
+     * @param request
+     * @return
+     */
+    @RequestMapping("/bookstore/shoppingcart")
+    public String goShopingCart(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Object user = session.getAttribute("user");
+        if (user instanceof BookUser){
+            return "pucharse";
+        }else {
+            return "redirect:/index";
         }
     }
 }

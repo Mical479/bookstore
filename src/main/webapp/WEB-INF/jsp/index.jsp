@@ -16,16 +16,16 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/plugins.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/plugins.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- Cusom css -->
-    <link rel="stylesheet" href="css/custom.css">
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
 
     <!-- Modernizer js -->
-    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -41,24 +41,25 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-6 col-lg-2">
                     <div class="logo">
-                        <a href="index.jsp">
-                            <img src="images/logo/logo.png" alt="logo images">
+                        <a href="/index">
+                            <img src="/images/logo/logo.png" alt="logo images">
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-8 d-none d-lg-block">
                     <nav class="mainmenu__nav">
                         <ul class="meninmenu d-flex justify-content-start">
-                            <li><a href="index.jsp">主页</a></li>
+                            <li><a href="/index">主页</a></li>
                             <li><a href="/shop-list">书单</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-md-6 col-sm-6 col-6 col-lg-2">
                     <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
-                        <li class="shop_search"><a class="search__active" href="#"></a></li>
-                        <li class="wishlist"><a href="#"></a></li>
-                        <li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun">3</span></a>
+                        <li class="shop_search"><a class="search__active" href="javascript:;"></a></li>
+                        <li class="wishlist"><a href="javascript:;"></a></li>
+                        <li class="shopcart"><a class="cartbox_active" href="javascript:;"><span
+                                class="product_qun">3</span></a>
                             <!-- Start Shopping Cart -->
                             <div class="block-minicart minicart__active">
                                 <div class="minicart-content-wrapper">
@@ -73,13 +74,13 @@
                                         <span>$66.00</span>
                                     </div>
                                     <div class="mini_action checkout">
-                                        <a class="checkout__btn" href="#">结账</a>
+                                        <a class="checkout__btn" href="javascript:;">结账</a>
                                     </div>
                                     <div class="single__items">
                                         <div class="miniproduct">
                                             <div class="item01 d-flex">
                                                 <div class="thumb">
-                                                    <a href="single-product.jsp"><img src="images/product/sm-img/1.jpg"
+                                                    <a href="single-product.jsp"><img src="/images/product/sm-img/1.jpg"
                                                                                       alt="product images"></a>
                                                 </div>
                                                 <div class="content">
@@ -88,15 +89,17 @@
                                                     <div class="product_prize d-flex justify-content-between">
                                                         <span class="qun">Qty: 01</span>
                                                         <ul class="d-flex justify-content-end">
-                                                            <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
+                                                            <li><a href="javascript:;"><i
+                                                                    class="zmdi zmdi-settings"></i></a></li>
+                                                            <li><a href="javascript:;"><i class="zmdi zmdi-delete"></i></a>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="item01 d-flex mt--20">
                                                 <div class="thumb">
-                                                    <a href="single-product.jsp"><img src="images/product/sm-img/3.jpg"
+                                                    <a href="single-product.jsp"><img src="/images/product/sm-img/3.jpg"
                                                                                       alt="product images"></a>
                                                 </div>
                                                 <div class="content">
@@ -105,15 +108,17 @@
                                                     <div class="product_prize d-flex justify-content-between">
                                                         <span class="qun">Qty: 03</span>
                                                         <ul class="d-flex justify-content-end">
-                                                            <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
+                                                            <li><a href="javascript:;"><i
+                                                                    class="zmdi zmdi-settings"></i></a></li>
+                                                            <li><a href="javascript:;"><i class="zmdi zmdi-delete"></i></a>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="item01 d-flex mt--20">
                                                 <div class="thumb">
-                                                    <a href="single-product.jsp"><img src="images/product/sm-img/2.jpg"
+                                                    <a href="single-product.jsp"><img src="/images/product/sm-img/2.jpg"
                                                                                       alt="product images"></a>
                                                 </div>
                                                 <div class="content">
@@ -122,8 +127,10 @@
                                                     <div class="product_prize d-flex justify-content-between">
                                                         <span class="qun">Qty: 03</span>
                                                         <ul class="d-flex justify-content-end">
-                                                            <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
+                                                            <li><a href="javascript:;"><i
+                                                                    class="zmdi zmdi-settings"></i></a></li>
+                                                            <li><a href="javascript:;"><i class="zmdi zmdi-delete"></i></a>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -131,13 +138,13 @@
                                         </div>
                                     </div>
                                     <div class="mini_action cart">
-                                        <a class="cart__btn" href="#">View and edit cart</a>
+                                        <a class="cart__btn" href="javascript:;">View and edit cart</a>
                                     </div>
                                 </div>
                             </div>
                             <!-- End Shopping Cart -->
                         </li>
-                        <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
+                        <li class="setting__bar__icon"><a class="setting__active" href="javascript:;"></a>
                             <div class="searchbar__content setting__block">
                                 <div class="content-inner">
                                     <div class="switcher-currency">
@@ -149,15 +156,16 @@
                                                 <div class="switcher-options">
                                                     <div class="switcher-currency-trigger">
                                                         <div class="setting__menu">
-                                                            <span><a href="#">我的账户</a></span>
-                                                            <span><a href="/pucharse.jsp">我的购物车</a></span>
-                                                            <span><a href="#">退出</a></span>
+                                                            <span><a href="javascript:;">我的账户</a></span>
+                                                            <span><a href="/bookstore/shoppingcart">我的购物车</a></span>
+                                                            <span><a href="javascript:;">退出</a></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </c:when>
                                             <c:otherwise>
-                                                <span class="label switcher-label" style="font-size: 20px"><a href="/login">注册/登录</a> </span>
+                                                <span class="label switcher-label" style="font-size: 20px"><a
+                                                        href="/login">注册/登录</a> </span>
                                             </c:otherwise>
                                         </c:choose>
                                     </div>
@@ -167,18 +175,7 @@
                     </ul>
                 </div>
             </div>
-            <!-- Start Mobile Menu -->
-            <div class="row d-none">
-                <div class="col-lg-12 d-none">
-                    <nav class="mobilemenu__nav">
-                        <ul class="meninmenu">
-                            <li><a href="index.jsp">主页</a></li>
-                            <li><a href="shop-list.jsp">书单</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- End Mobile Menu -->
+
             <div class="mobile-menu d-block d-lg-none">
             </div>
             <!-- Mobile Menu -->
@@ -191,7 +188,7 @@
             <div class="field__search">
                 <input type="text" placeholder="请输入您想要的书籍名称...">
                 <div class="action">
-                    <a href="#"><i class="zmdi zmdi-search"></i></a>
+                    <a href="javascript:;"><i class="zmdi zmdi-search"></i></a>
                 </div>
             </div>
         </form>
@@ -212,7 +209,7 @@
                                 <h2>买 <span>您</span></h2>
                                 <h2>最爱的 <span>宝贝</span></h2>
                                 <h2>请来<span>这里 </span></h2>
-                                <a class="shopbtn" href="#">立即购买</a>
+                                <a class="shopbtn" href="javascript:;">立即购买</a>
                             </div>
                         </div>
                     </div>
@@ -230,7 +227,7 @@
                                 <h2>买 <span>您 </span></h2>
                                 <h2>最喜爱的 <span>宝贝 </span></h2>
                                 <h2>请来 <span>这里 </span></h2>
-                                <a class="shopbtn" href="#">立即购买</a>
+                                <a class="shopbtn" href="javascript:;">立即购买</a>
                             </div>
                         </div>
                     </div>
@@ -276,10 +273,14 @@
                                 <div class="action">
                                     <div class="actions_inner">
                                         <ul class="add_to_links">
-                                            <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a></li>
-                                            <li><a class="wishlist" href="#"><i
-                                                    class="bi bi-shopping-cart-full"></i></a></li>
-                                            <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+                                            <li><a class="cart" href="javascript:;"><i class="bi bi-shopping-bag4"></i></a>
+                                            </li>
+                                            <li><a class="wishlist" href="javascript:;"><i
+                                                    class="bi bi-shopping-cart-full shop-cart">
+                                                <input type="hidden" value="${book.id}"/>
+                                            </i></a></li>
+                                            <li><a class="compare" href="javascript:;"><i class="bi bi-heart-beat"></i></a>
+                                            </li>
                                             <li><a data-toggle="modal" title="Quick View"
                                                    class="quickview modal-view detail-link" href="#productmodal"><i
                                                     class="bi bi-search"></i></a></li>
@@ -400,11 +401,15 @@
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a>
+                                                        <li><a class="cart" href="javascript:;"><i
+                                                                class="bi bi-shopping-bag4"></i></a>
                                                         </li>
-                                                        <li><a class="wishlist" href="#"><i
-                                                                class="bi bi-shopping-cart-full"></i></a></li>
-                                                        <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a>
+                                                        <li><a class="wishlist" href="javascript:;"><i
+                                                                class="bi bi-shopping-cart-full shop-cart">
+                                                            <input type="hidden" value="${book.id}"/>
+                                                        </i></a></li>
+                                                        <li><a class="compare" href="javascript:;"><i
+                                                                class="bi bi-heart-beat"></i></a>
                                                         </li>
                                                         <li><a data-toggle="modal" title="Quick View"
                                                                class="quickview modal-view detail-link"
@@ -464,11 +469,15 @@
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a>
+                                                        <li><a class="cart" href="javascript:;"><i
+                                                                class="bi bi-shopping-bag4"></i></a>
                                                         </li>
-                                                        <li><a class="wishlist" href="#"><i
-                                                                class="bi bi-shopping-cart-full"></i></a></li>
-                                                        <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a>
+                                                        <li><a class="wishlist" href="javascript:;"><i
+                                                                class="bi bi-shopping-cart-full shop-cart">
+                                                            <input type="hidden" value="${next.id}"/>
+                                                        </i></a></li>
+                                                        <li><a class="compare" href="javascript:;"><i
+                                                                class="bi bi-heart-beat"></i></a>
                                                         </li>
                                                         <li><a data-toggle="modal" title="Quick View"
                                                                class="quickview modal-view detail-link"
@@ -537,11 +546,15 @@
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a>
+                                                        <li><a class="cart" href="javascript:;"><i
+                                                                class="bi bi-shopping-bag4"></i></a>
                                                         </li>
-                                                        <li><a class="wishlist" href="#"><i
-                                                                class="bi bi-shopping-cart-full"></i></a></li>
-                                                        <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a>
+                                                        <li><a class="wishlist" href="javascript:;"><i
+                                                                class="bi bi-shopping-cart-full shop-cart">
+                                                            <input type="hidden" value="${book.id}"/>
+                                                        </i></a></li>
+                                                        <li><a class="compare" href="javascript:;"><i
+                                                                class="bi bi-heart-beat"></i></a>
                                                         </li>
                                                         <li><a data-toggle="modal" title="Quick View"
                                                                class="quickview modal-view detail-link"
@@ -601,11 +614,15 @@
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a>
+                                                        <li><a class="cart" href="javascript:;"><i
+                                                                class="bi bi-shopping-bag4"></i></a>
                                                         </li>
-                                                        <li><a class="wishlist" href="#"><i
-                                                                class="bi bi-shopping-cart-full"></i></a></li>
-                                                        <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a>
+                                                        <li><a class="wishlist" href="javascript:;"><i
+                                                                class="bi bi-shopping-cart-full shop-cart">
+                                                            <input type="hidden" value="${next.id}"/>
+                                                        </i></a></li>
+                                                        <li><a class="compare" href="javascript:;"><i
+                                                                class="bi bi-heart-beat"></i></a>
                                                         </li>
                                                         <li><a data-toggle="modal" title="Quick View"
                                                                class="quickview modal-view detail-link"
@@ -674,11 +691,15 @@
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a>
+                                                        <li><a class="cart" href="javascript:;"><i
+                                                                class="bi bi-shopping-bag4"></i></a>
                                                         </li>
-                                                        <li><a class="wishlist" href="#"><i
-                                                                class="bi bi-shopping-cart-full"></i></a></li>
-                                                        <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a>
+                                                        <li><a class="wishlist" href="javascript:;"><i
+                                                                class="bi bi-shopping-cart-full shop-cart">
+                                                            <input type="hidden" value="${book.id}"/>
+                                                        </i></a></li>
+                                                        <li><a class="compare" href="javascript:;"><i
+                                                                class="bi bi-heart-beat"></i></a>
                                                         </li>
                                                         <li><a data-toggle="modal" title="Quick View"
                                                                class="quickview modal-view detail-link"
@@ -738,11 +759,15 @@
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a>
+                                                        <li><a class="cart" href="javascript:;"><i
+                                                                class="bi bi-shopping-bag4"></i></a>
                                                         </li>
-                                                        <li><a class="wishlist" href="#"><i
-                                                                class="bi bi-shopping-cart-full"></i></a></li>
-                                                        <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a>
+                                                        <li><a class="wishlist" href="javascript:;"><i
+                                                                class="bi bi-shopping-cart-full shop-cart">
+                                                            <input type="hidden" value="${next.id}"/>
+                                                        </i></a></li>
+                                                        <li><a class="compare" href="javascript:;"><i
+                                                                class="bi bi-heart-beat"></i></a>
                                                         </li>
                                                         <li><a data-toggle="modal" title="Quick View"
                                                                class="quickview modal-view detail-link"
@@ -811,11 +836,15 @@
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a>
+                                                        <li><a class="cart" href="javascript:;"><i
+                                                                class="bi bi-shopping-bag4"></i></a>
                                                         </li>
-                                                        <li><a class="wishlist" href="#"><i
-                                                                class="bi bi-shopping-cart-full"></i></a></li>
-                                                        <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a>
+                                                        <li><a class="wishlist" href="javascript:;"><i
+                                                                class="bi bi-shopping-cart-full shop-cart">
+                                                            <input type="hidden" value="${book.id}"/>
+                                                        </i></a></li>
+                                                        <li><a class="compare" href="javascript:;"><i
+                                                                class="bi bi-heart-beat"></i></a>
                                                         </li>
                                                         <li><a data-toggle="modal" title="Quick View"
                                                                class="quickview modal-view detail-link"
@@ -838,7 +867,6 @@
                                 </div>
                                 <!-- Start Single Product -->
                                 <c:set var="next" value="${cat4[stu.index + 1]}"/>
-                                <!-- Start Single Product -->
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                     <div class="product product__style--3">
                                         <div class="product__thumb">
@@ -875,11 +903,15 @@
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a>
+                                                        <li><a class="cart" href="javascript:;"><i
+                                                                class="bi bi-shopping-bag4"></i></a>
                                                         </li>
-                                                        <li><a class="wishlist" href="#"><i
-                                                                class="bi bi-shopping-cart-full"></i></a></li>
-                                                        <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a>
+                                                        <li><a class="wishlist" href="javascript:;"><i
+                                                                class="bi bi-shopping-cart-full shop-cart">
+                                                            <input type="hidden" value="${next.id}"/>
+                                                        </i></a></li>
+                                                        <li><a class="compare" href="javascript:;"><i
+                                                                class="bi bi-heart-beat"></i></a>
                                                         </li>
                                                         <li><a data-toggle="modal" title="Quick View"
                                                                class="quickview modal-view detail-link"
@@ -948,11 +980,15 @@
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a>
+                                                        <li><a class="cart" href="javascript:;"><i
+                                                                class="bi bi-shopping-bag4"></i></a>
                                                         </li>
-                                                        <li><a class="wishlist" href="#"><i
-                                                                class="bi bi-shopping-cart-full"></i></a></li>
-                                                        <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a>
+                                                        <li><a class="wishlist" href="javascript:;"><i
+                                                                class="bi bi-shopping-cart-full shop-cart">
+                                                            <input type="hidden" value="${book.id}"/>
+                                                        </i></a></li>
+                                                        <li><a class="compare" href="javascript:;"><i
+                                                                class="bi bi-heart-beat"></i></a>
                                                         </li>
                                                         <li><a data-toggle="modal" title="Quick View"
                                                                class="quickview modal-view detail-link"
@@ -973,9 +1009,9 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <!-- Start Single Product -->
                                 <c:set var="next" value="${cat5[stu.index + 1]}"/>
-                                <!-- Start Single Product -->
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                     <div class="product product__style--3">
                                         <div class="product__thumb">
@@ -1012,11 +1048,15 @@
                                             <div class="action">
                                                 <div class="actions_inner">
                                                     <ul class="add_to_links">
-                                                        <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a>
+                                                        <li><a class="cart" href="javascript:;"><i
+                                                                class="bi bi-shopping-bag4"></i></a>
                                                         </li>
-                                                        <li><a class="wishlist" href="#"><i
-                                                                class="bi bi-shopping-cart-full"></i></a></li>
-                                                        <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a>
+                                                        <li><a class="wishlist" href="javascript:;"><i
+                                                                class="bi bi-shopping-cart-full shop-cart">
+                                                            <input type="hidden" value="${next.id}"/>
+                                                        </i></a></li>
+                                                        <li><a class="compare" href="javascript:;"><i
+                                                                class="bi bi-heart-beat"></i></a>
                                                         </li>
                                                         <li><a data-toggle="modal" title="Quick View"
                                                                class="quickview modal-view detail-link"
@@ -1068,8 +1108,8 @@
                                 <span class="day">Dec 06, 18</span>
                                 <div class="post-meta">
                                     <ul>
-                                        <li><a href="#"><i class="bi bi-love"></i>72</a></li>
-                                        <li><a href="#"><i class="bi bi-chat-bubble"></i>27</a></li>
+                                        <li><a href="javascript:;"><i class="bi bi-love"></i>72</a></li>
+                                        <li><a href="javascript:;"><i class="bi bi-chat-bubble"></i>27</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1085,8 +1125,8 @@
                                 <span class="day">Mar 08, 18</span>
                                 <div class="post-meta">
                                     <ul>
-                                        <li><a href="#"><i class="bi bi-love"></i>72</a></li>
-                                        <li><a href="#"><i class="bi bi-chat-bubble"></i>27</a></li>
+                                        <li><a href="javascript:;"><i class="bi bi-love"></i>72</a></li>
+                                        <li><a href="javascript:;"><i class="bi bi-chat-bubble"></i>27</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1102,8 +1142,8 @@
                                 <span class="day">Nov 11, 18</span>
                                 <div class="post-meta">
                                     <ul>
-                                        <li><a href="#"><i class="bi bi-love"></i>72</a></li>
-                                        <li><a href="#"><i class="bi bi-chat-bubble"></i>27</a></li>
+                                        <li><a href="javascript:;"><i class="bi bi-love"></i>72</a></li>
+                                        <li><a href="javascript:;"><i class="bi bi-chat-bubble"></i>27</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1138,9 +1178,12 @@
                         <div class="action">
                             <div class="actions_inner">
                                 <ul class="add_to_links">
-                                    <li><a class="cart" href="#"><i class="bi bi-shopping-bag4"></i></a></li>
-                                    <li><a class="wishlist" href="#"><i class="bi bi-shopping-cart-full"></i></a></li>
-                                    <li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+                                    <li><a class="cart" href="javascript:;"><i class="bi bi-shopping-bag4"></i></a></li>
+                                    <li><a class="wishlist" href="javascript:;"><i
+                                            class="bi bi-shopping-cart-full shop-cart">
+                                        <input type="hidden" value="${book.id}"/>
+                                    </i></a></li>
+                                    <li><a class="compare" href="javascript:;"><i class="bi bi-heart-beat"></i></a></li>
                                     <li><a data-toggle="modal" title="Quick View"
                                            class="quickview modal-view detail-link" href="#productmodal"><i
                                             class="bi bi-search"></i></a></li>
@@ -1171,26 +1214,26 @@
                     <div class="col-lg-12">
                         <div class="footer__widget footer__menu">
                             <div class="ft__logo">
-                                <a href="index.jsp">
-                                    <img src="images/logo/3.png" alt="logo">
+                                <a href="/index">
+                                    <img src="/images/logo/3.png" alt="logo">
                                 </a>
                                 <p>这里有许多版本的书籍，但大多数的书籍都经历了岁月的沉淀，愿您在这里找到您满意的书籍，遨游在知识的海洋</p>
                             </div>
                             <div class="footer__content">
                                 <ul class="social__net social__net--2 d-flex justify-content-center">
-                                    <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-                                    <li><a href="#"><i class="bi bi-google"></i></a></li>
-                                    <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-                                    <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="bi bi-youtube"></i></a></li>
+                                    <li><a href="javascript:;"><i class="bi bi-facebook"></i></a></li>
+                                    <li><a href="javascript:;"><i class="bi bi-google"></i></a></li>
+                                    <li><a href="javascript:;"><i class="bi bi-twitter"></i></a></li>
+                                    <li><a href="javascript:;"><i class="bi bi-linkedin"></i></a></li>
+                                    <li><a href="javascript:;"><i class="bi bi-youtube"></i></a></li>
                                 </ul>
                                 <ul class="mainmenu d-flex justify-content-center">
-                                    <li><a href="index.jsp">热门书籍</a></li>
-                                    <li><a href="index.jsp">畅销书作者</a></li>
-                                    <li><a href="index.jsp">折扣书籍</a></li>
-                                    <li><a href="index.jsp">愿望清单</a></li>
-                                    <li><a href="index.jsp">博客</a></li>
-                                    <li><a href="index.jsp">联系方式</a></li>
+                                    <li><a href="/index">热门书籍</a></li>
+                                    <li><a href="/index">畅销书作者</a></li>
+                                    <li><a href="/index">折扣书籍</a></li>
+                                    <li><a href="/index">愿望清单</a></li>
+                                    <li><a href="/index">博客</a></li>
+                                    <li><a href="/index">联系方式</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1210,7 +1253,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="payment text-right">
-                            <img src="images/icons/payment.png" alt=""/>
+                            <img src="/images/icons/payment.png" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -1233,7 +1276,7 @@
                             <!-- Start product images -->
                             <div class="product-images">
                                 <div class="main-image images">
-                                    <img alt="big images" src="images/product/big-img/1.jpg">
+                                    <img alt="big images" src="/images/product/big-img/1.jpg">
                                 </div>
                             </div>
                             <!-- end product images -->
@@ -1248,7 +1291,7 @@
                                         <li><span class="ti-star"></span></li>
                                     </ul>
                                     <div class="review">
-                                        <a href="#">4 customer reviews</a>
+                                        <a href="javascript:;">4 customer reviews</a>
                                     </div>
                                 </div>
                                 <div class="price-box-3">
@@ -1264,39 +1307,40 @@
                                 <div class="select__color">
                                     <h2>Select color</h2>
                                     <ul class="color__list">
-                                        <li class="red"><a title="Red" href="#">Red</a></li>
-                                        <li class="gold"><a title="Gold" href="#">Gold</a></li>
-                                        <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                                        <li class="orange"><a title="Orange" href="#">Orange</a></li>
+                                        <li class="red"><a title="Red" href="javascript:;">Red</a></li>
+                                        <li class="gold"><a title="Gold" href="javascript:;">Gold</a></li>
+                                        <li class="orange"><a title="Orange" href="javascript:;">Orange</a></li>
+                                        <li class="orange"><a title="Orange" href="javascript:;">Orange</a></li>
                                     </ul>
                                 </div>
                                 <div class="select__size">
                                     <h2>Select size</h2>
                                     <ul class="color__list">
-                                        <li class="l__size"><a title="L" href="#">L</a></li>
-                                        <li class="m__size"><a title="M" href="#">M</a></li>
-                                        <li class="s__size"><a title="S" href="#">S</a></li>
-                                        <li class="xl__size"><a title="XL" href="#">XL</a></li>
-                                        <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
+                                        <li class="l__size"><a title="L" href="javascript:;">L</a></li>
+                                        <li class="m__size"><a title="M" href="javascript:;">M</a></li>
+                                        <li class="s__size"><a title="S" href="javascript:;">S</a></li>
+                                        <li class="xl__size"><a title="XL" href="javascript:;">XL</a></li>
+                                        <li class="xxl__size"><a title="XXL" href="javascript:;">XXL</a></li>
                                     </ul>
                                 </div>
                                 <div class="social-sharing">
                                     <div class="widget widget_socialsharing_widget">
                                         <h3 class="widget-title-modal">Share this product</h3>
                                         <ul class="social__net social__net--2 d-flex justify-content-start">
-                                            <li class="facebook"><a href="#" class="rss social-icon"><i
+                                            <li class="facebook"><a href="javascript:;" class="rss social-icon"><i
                                                     class="zmdi zmdi-rss"></i></a></li>
-                                            <li class="linkedin"><a href="#" class="linkedin social-icon"><i
+                                            <li class="linkedin"><a href="javascript:;" class="linkedin social-icon"><i
                                                     class="zmdi zmdi-linkedin"></i></a></li>
-                                            <li class="pinterest"><a href="#" class="pinterest social-icon"><i
+                                            <li class="pinterest"><a href="javascript:;"
+                                                                     class="pinterest social-icon"><i
                                                     class="zmdi zmdi-pinterest"></i></a></li>
-                                            <li class="tumblr"><a href="#" class="tumblr social-icon"><i
+                                            <li class="tumblr"><a href="javascript:;" class="tumblr social-icon"><i
                                                     class="zmdi zmdi-tumblr"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="addtocart-btn">
-                                    <a href="#">Add to cart</a>
+                                    <a href="javascript:;">Add to cart</a>
                                 </div>
                             </div>
                         </div>
@@ -1310,10 +1354,38 @@
 <!-- //Main wrapper -->
 
 <!-- JS Files -->
-<script src="js/vendor/jquery-3.2.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/active.js"></script>
+<script src="/js/vendor/jquery-3.2.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/active.js"></script>
+<script>
+    <c:if test="${!empty sessionScope.user}">
+        $(function () {
+            $(".shop-cart").click(function () {
+                $.ajax({
+                    url: "/bookstore/getshoptocart",
+                    data: {
+                        bookId: $(this).children().val()
+                    },
+                    type: "POST",
+                    success: function (data) {
+                        alert(data.data.length);
+                        var bookdata = JSON.parse(data.data);
+                        var cartSize = bookdata.length;
+                        // alert(cartSize);
+                    }
+                });
+            });
+        });
+    </c:if>
+    <c:if test="${empty sessionScope.user}">
+        $(function () {
+            $(".shop-cart").click(function () {
+                window.location.href = "/login";
+            });
+        });
+    </c:if>
+</script>
 </body>
 </html>

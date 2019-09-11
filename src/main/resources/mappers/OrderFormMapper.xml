@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookstore.mapper.OrderFormMapper">
+    <resultMap id="order_form" type="com.bookstore.pojo.OrderForm">
+        <id column="order_id" property="orderId"/>
+        <result column="receiver_telephone" property="receiverTelephone"/>
+        <result column="receiver_address" property="receiverAddress"/>
+        <result column="receiver_name" property="receiverName"/>
+        <result column="all_cost" property="allCost"/>
+        <result column="all_number" property="allNumber"/>
+        <result column="order_create_time" property="orderCreateTime"/>
+        <!-- 一对一：association使用select属性引入另外一条SQL语句 -->
+        <association property="bookUser" column="user_id" javaType="com.bookstore.pojo.BookUser">
+            <id property="userId" column="user_id"/>
+        </association>
+    </resultMap>
+
+    <!-- 嵌套结果：使用嵌套结果映射来处理重复的联合结果的子集 -->
+    <!--根据orderId查询订单详情-->
+    <select id="selectByOrderId" parameterType="Integer"
+            resultMap="order_form">
+	   SELECT p.*,bookuser.user_id
+	    from order_form p,book_user bookuser
+	    where p.user_id=bookuser.user_id
+	    and p.order_id=#{orderId}
+	</select>
+
+    <!--根据使用者user_id查询订单列表详情-->
+    <select id="selectByUserId" parameterType="Integer"
+            resultMap="order_form">
+         SELECT p.*,bookuser.user_id
+	    from order_form p,book_user bookuser
+	    where p.user_id=bookuser.user_id
+	    and p.user_id=#{userId}
+    </select>
+
+    <insert id="insertForm" parameterType="com.bookstore.pojo.OrderForm">
+        insert into order_form(order_id,user_id,receiver_telephone,receiver_address,receiver_name,all_cost,all_number,order_create_time)
+        values (#{orderId},#{bookUser.userId},#{receiverTelephone},#{receiverAddress},#{receiverName},#{allCost},#{allNumber},#{orderCreateTime})
+    </insert>
+</mapper>

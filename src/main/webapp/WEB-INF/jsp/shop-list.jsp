@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-md-4 col-sm-4 col-7 col-lg-2">
                     <div class="logo">
-                        <a href="index.jsp">
+                        <a href="/index">
                             <img src="/images/logo/logo.png" alt="logo images">
                         </a>
                     </div>
@@ -151,7 +151,7 @@
                                                     <div class="switcher-currency-trigger">
                                                         <div class="setting__menu">
                                                             <span><a href="#">我的账户</a></span>
-                                                            <span><a href="/pucharse.jsp">我的购物车</a></span>
+                                                            <span><a href="/bookstore/shoppingcart">我的购物车</a></span>
                                                             <span><a href="#">退出</a></span>
                                                         </div>
                                                     </div>
@@ -413,7 +413,7 @@
                     <div class="col-lg-12">
                         <div class="footer__widget footer__menu">
                             <div class="ft__logo">
-                                <a href="index.jsp">
+                                <a href="/index">
                                     <img src="/images/logo/3.png" alt="logo">
                                 </a>
                                 <p>这里有许多版本的书籍，但大多数的书籍都经历了岁月的沉淀，愿您在这里找到您满意的书籍，遨游在知识的海洋</p>
@@ -427,12 +427,12 @@
                                     <li><a href="#"><i class="bi bi-youtube"></i></a></li>
                                 </ul>
                                 <ul class="mainmenu d-flex justify-content-center">
-                                    <li><a href="index.jsp">热门书籍</a></li>
-                                    <li><a href="index.jsp">畅销书作者</a></li>
-                                    <li><a href="index.jsp">折扣书籍</a></li>
-                                    <li><a href="index.jsp">愿望清单</a></li>
-                                    <li><a href="index.jsp">博客</a></li>
-                                    <li><a href="index.jsp">联系方式</a></li>
+                                    <li><a href="/index">热门书籍</a></li>
+                                    <li><a href="/index">畅销书作者</a></li>
+                                    <li><a href="/index">折扣书籍</a></li>
+                                    <li><a href="/index">愿望清单</a></li>
+                                    <li><a href="/index">博客</a></li>
+                                    <li><a href="/index">联系方式</a></li>
                                 </ul>
                             </div>
                         </div>

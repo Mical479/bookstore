@@ -61,7 +61,7 @@ public class PageController {
         modelAndView.addObject("hotBooks", hotBooks);
         modelAndView.addObject("bookCat", bookCat);
 
-        modelAndView.setViewName("index");
+        modelAndView.setViewName("/index");
         return modelAndView;
     }
 
@@ -125,7 +125,7 @@ public class PageController {
         List<BookCat> bookCats = bookCatService.getRandomBookCats(1, 25);
 
         modelAndView.addObject("bookCats", bookCats);
-        modelAndView.setViewName("shop-list");
+        modelAndView.setViewName("/shop-list");
         return modelAndView;
     }
 
@@ -135,6 +135,6 @@ public class PageController {
      */
     @RequestMapping("/login")
     public String goLoginPage(){
-        return "login";
+        return "/login";
     }
 }
