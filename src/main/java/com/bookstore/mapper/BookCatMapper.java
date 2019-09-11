@@ -20,6 +20,7 @@ public interface BookCatMapper {
      */
     List<BookCat> getParentCat(@Param("parentId") int parentId, @Param("count") int count);
 
+
     /**
      * 根据id获取该分类
      * @param id

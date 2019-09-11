@@ -11,6 +11,7 @@ import java.util.List;
  * 创建人：Mical
  */
 public interface BookCatService {
+
     List<BookCat> getAllBookCatsById(int id);
 
     List<BookCat> getRandomBookCats(int parentId, int count);

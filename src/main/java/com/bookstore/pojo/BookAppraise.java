@@ -16,6 +16,7 @@ public class BookAppraise implements Serializable {
     private int bookId;
     private Date talkTime;
     private String talkContent;
+    private int replyId;
 
     public int getId() {
         return id;
@@ -63,5 +64,12 @@ public class BookAppraise implements Serializable {
 
     public void setTalkContent(String talkContent) {
         this.talkContent = talkContent;
+    }
+
+    public int getReplyId(){
+        return replyId;
+    }
+    public void setReplyId(int replyId){
+        this.replyId=replyId;
     }
 }
