@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface ShoppingCartService {
 
-    void insertShoppsToCart(ShopList shopList);
+    void insertShopsToCart(ShopList shopList);
 
     List<ShopList> getShopListByUserId(int userId);
 }

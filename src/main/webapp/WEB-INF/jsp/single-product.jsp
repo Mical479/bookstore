@@ -1,5 +1,6 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -59,85 +60,13 @@
                     <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
                         <li class="shop_search"><a class="search__active" href="#"></a></li>
                         <li class="wishlist"><a href="#"></a></li>
-                        <li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun">3</span></a>
-                            <!-- Start Shopping Cart -->
-                            <div class="block-minicart minicart__active">
-                                <div class="minicart-content-wrapper">
-                                    <div class="micart__close">
-                                        <span>关闭</span>
-                                    </div>
-                                    <div class="items-total d-flex justify-content-between">
-                                        <span>3 小件</span>
-                                        <span>购物车小计</span>
-                                    </div>
-                                    <div class="total_amount text-right">
-                                        <span>$66.00</span>
-                                    </div>
-                                    <div class="mini_action checkout">
-                                        <a class="checkout__btn" href="#">结账</a>
-                                    </div>
-                                    <div class="single__items">
-                                        <div class="miniproduct">
-                                            <div class="item01 d-flex">
-                                                <div class="thumb">
-                                                    <a href="single-product.jsp"><img src="/images/product/sm-img/1.jpg"
-                                                                                      alt="product images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h6><a href="single-product.jsp">Voyage Yoga Bag</a></h6>
-                                                    <span class="prize">$30.00</span>
-                                                    <div class="product_prize d-flex justify-content-between">
-                                                        <span class="qun">Qty: 01</span>
-                                                        <ul class="d-flex justify-content-end">
-                                                            <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item01 d-flex mt--20">
-                                                <div class="thumb">
-                                                    <a href="single-product.jsp"><img src="/images/product/sm-img/3.jpg"
-                                                                                      alt="product images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h6><a href="single-product.jsp">Impulse Duffle</a></h6>
-                                                    <span class="prize">$40.00</span>
-                                                    <div class="product_prize d-flex justify-content-between">
-                                                        <span class="qun">Qty: 03</span>
-                                                        <ul class="d-flex justify-content-end">
-                                                            <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item01 d-flex mt--20">
-                                                <div class="thumb">
-                                                    <a href="single-product.jsp"><img src="/images/product/sm-img/2.jpg"
-                                                                                      alt="product images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h6><a href="single-product.jsp">Compete Track Tote</a></h6>
-                                                    <span class="prize">$40.00</span>
-                                                    <div class="product_prize d-flex justify-content-between">
-                                                        <span class="qun">Qty: 03</span>
-                                                        <ul class="d-flex justify-content-end">
-                                                            <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mini_action cart">
-                                        <a class="cart__btn" href="#">查看和编辑购物车</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Shopping Cart -->
-                        </li>
+                        <c:if test="${!empty sessionScope.user}">
+                            <li class="shopcart"><a class="cartbox_active" href="/bookstore/shoppingcart"><span
+                                    class="product_qun" id="cart-number">${sessionScope.shoppingNumbers}</span></a>
+                                <!-- Start Shopping Cart -->
+                                <!-- End Shopping Cart -->
+                            </li>
+                        </c:if>
                         <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
                             <div class="searchbar__content setting__block">
                                 <div class="content-inner">
@@ -244,7 +173,7 @@
                                         <input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty"
                                                type="number">
                                         <div class="addtocart__actions">
-                                            <button class="tocart" type="submit" title="Add to Cart">加入购物车</button>
+                                            <button class="tocart" type="button" title="Add to Cart"><input type="hidden" value="${myBook.id}"/>加入购物车</button>
                                             <button class="btn btn-danger">立即购买</button>
                                         </div>
                                     </div>
@@ -724,6 +653,38 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="/js/active.js"></script>
-
+<script>
+    <c:if test="${!empty sessionScope.user}">
+    $(function () {
+        $(".tocart").click(function () {
+            $.ajax({
+                url: "/bookstore/getshoptocart",
+                data: {
+                    bookId: $(this).children().val(),
+                    bookNumber: $(".qty").val()
+                },
+                type: "POST",
+                success: function (data) {
+                    if(data.code == 9){
+                        $("#cart-number").html(data.data);
+                    }else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        });
+        $("#cart-number").click(function(){
+            window.location.href = "/bookstore/shoppingcart";
+        });
+    });
+    </c:if>
+    <c:if test="${empty sessionScope.user}">
+    $(function () {
+        $(".tocart").click(function () {
+            alert("请先登录");
+        });
+    });
+    </c:if>
+</script>
 </body>
 </html>
