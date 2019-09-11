@@ -2,6 +2,8 @@ package com.bookstore.controller;
 
 import com.bookstore.enums.CommonEnums;
 import com.bookstore.pojo.BookUser;
+import com.bookstore.pojo.ShopList;
+import com.bookstore.service.ShoppingCartService;
 import com.bookstore.service.UserService;
 import com.bookstore.vo.CommonVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * 类 名 称：UserController
@@ -22,6 +25,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ShoppingCartService shoppingCartService;
 
     /**
      * 登录操作
@@ -44,8 +50,12 @@ public class UserController {
                 //根据email和password查找，如果不存在，就是密码错误
                 user = userService.getUser(bookUser);
                 if (user != null){
+                    List<ShopList> shoppingList = shoppingCartService.getShopListByUserId(user.getUserId());
                     //登录成功，加入session
-                    request.getSession(true).setAttribute("user", user);
+                    HttpSession session = request.getSession(true);
+                    session.setAttribute("user", user);
+                    session.setAttribute("shoppingNumbers",
+                            shoppingList.stream().mapToInt(ShopList::getBookNumber).sum());
                     return new CommonVO(CommonEnums.LOGIN_SUCCESS);
                 }else {
                     return new CommonVO(CommonEnums.USER_PASSWORD_ERROR);
@@ -106,4 +116,5 @@ public class UserController {
             return "redirect:/index";
         }
     }
+
 }

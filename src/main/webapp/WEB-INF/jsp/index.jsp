@@ -58,92 +58,11 @@
                     <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
                         <li class="shop_search"><a class="search__active" href="javascript:;"></a></li>
                         <li class="wishlist"><a href="javascript:;"></a></li>
-                        <li class="shopcart"><a class="cartbox_active" href="javascript:;"><span
-                                class="product_qun">3</span></a>
-                            <!-- Start Shopping Cart -->
-                            <div class="block-minicart minicart__active">
-                                <div class="minicart-content-wrapper">
-                                    <div class="micart__close">
-                                        <span>关闭</span>
-                                    </div>
-                                    <div class="items-total d-flex justify-content-between">
-                                        <span>3 小件</span>
-                                        <span>购物车小计</span>
-                                    </div>
-                                    <div class="total_amount text-right">
-                                        <span>$66.00</span>
-                                    </div>
-                                    <div class="mini_action checkout">
-                                        <a class="checkout__btn" href="javascript:;">结账</a>
-                                    </div>
-                                    <div class="single__items">
-                                        <div class="miniproduct">
-                                            <div class="item01 d-flex">
-                                                <div class="thumb">
-                                                    <a href="single-product.jsp"><img src="/images/product/sm-img/1.jpg"
-                                                                                      alt="product images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h6><a href="single-product.jsp">Voyage Yoga Bag</a></h6>
-                                                    <span class="prize">$30.00</span>
-                                                    <div class="product_prize d-flex justify-content-between">
-                                                        <span class="qun">Qty: 01</span>
-                                                        <ul class="d-flex justify-content-end">
-                                                            <li><a href="javascript:;"><i
-                                                                    class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="javascript:;"><i class="zmdi zmdi-delete"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item01 d-flex mt--20">
-                                                <div class="thumb">
-                                                    <a href="single-product.jsp"><img src="/images/product/sm-img/3.jpg"
-                                                                                      alt="product images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h6><a href="single-product.jsp">Impulse Duffle</a></h6>
-                                                    <span class="prize">$40.00</span>
-                                                    <div class="product_prize d-flex justify-content-between">
-                                                        <span class="qun">Qty: 03</span>
-                                                        <ul class="d-flex justify-content-end">
-                                                            <li><a href="javascript:;"><i
-                                                                    class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="javascript:;"><i class="zmdi zmdi-delete"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item01 d-flex mt--20">
-                                                <div class="thumb">
-                                                    <a href="single-product.jsp"><img src="/images/product/sm-img/2.jpg"
-                                                                                      alt="product images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h6><a href="single-product.jsp">Compete Track Tote</a></h6>
-                                                    <span class="prize">$40.00</span>
-                                                    <div class="product_prize d-flex justify-content-between">
-                                                        <span class="qun">Qty: 03</span>
-                                                        <ul class="d-flex justify-content-end">
-                                                            <li><a href="javascript:;"><i
-                                                                    class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="javascript:;"><i class="zmdi zmdi-delete"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mini_action cart">
-                                        <a class="cart__btn" href="javascript:;">View and edit cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Shopping Cart -->
-                        </li>
+                        <c:if test="${!empty sessionScope.user}">
+                                <li class="shopcart"><a class="cartbox_active" href="javascript: window.location.href='/bookstore/shoppingcart';"><span
+                                        class="product_qun" id="cart-number">${sessionScope.shoppingNumbers}</span></a>
+                                </li>
+                        </c:if>
                         <li class="setting__bar__icon"><a class="setting__active" href="javascript:;"></a>
                             <div class="searchbar__content setting__block">
                                 <div class="content-inner">
@@ -1247,7 +1166,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="copyright">
                             <div class="copy__right__inner text-left">
-                                <p>版权 &copy; 2018公司名称版权所有.</p>
+                                <p>版权 &copy; 成都理工大学淘金小组名称版权所有.</p>
                             </div>
                         </div>
                     </div>
@@ -1361,30 +1280,34 @@
 <script src="/js/active.js"></script>
 <script>
     <c:if test="${!empty sessionScope.user}">
-        $(function () {
-            $(".shop-cart").click(function () {
-                $.ajax({
-                    url: "/bookstore/getshoptocart",
-                    data: {
-                        bookId: $(this).children().val()
-                    },
-                    type: "POST",
-                    success: function (data) {
-                        alert(data.data.length);
-                        var bookdata = JSON.parse(data.data);
-                        var cartSize = bookdata.length;
-                        // alert(cartSize);
+    $(function () {
+        $(".shop-cart").click(function () {
+            $.ajax({
+                url: "/bookstore/getshoptocart",
+                data: {
+                    bookId: $(this).children().val()
+                },
+                type: "POST",
+                success: function (data) {
+                    if (data.code == 9) {
+                        $("#cart-number").html(data.data);
+                    } else {
+                        alert(data.msg);
                     }
-                });
+                }
             });
         });
+        $("#cart-number").click(function(){
+            window.location.href = "/bookstore/shoppingcart";
+        })
+    });
     </c:if>
     <c:if test="${empty sessionScope.user}">
-        $(function () {
-            $(".shop-cart").click(function () {
-                window.location.href = "/login";
-            });
+    $(function () {
+        $(".shop-cart").click(function () {
+            alert("请先登录");
         });
+    });
     </c:if>
 </script>
 </body>

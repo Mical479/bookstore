@@ -27,9 +27,16 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
      * @param shopList 购物车商品
      */
     @Override
-    public void insertShoppsToCart(ShopList shopList) {
+    public void insertShopsToCart(ShopList shopList) {
+        ShopList alerdyLists = shopListMapper.selectShopListByUserIdAndBookId(shopList.getUserId(), shopList.getBookInfo().getId());
         shopList.setJoinShopTime(new Date());
-        shopListMapper.insertShops(shopList);
+        if (alerdyLists != null){
+            int i = shopList.getBookNumber() + alerdyLists.getBookNumber();
+            alerdyLists.setBookNumber(i);
+            shopListMapper.updateShopList(alerdyLists);
+        }else {
+            shopListMapper.insertShops(shopList);
+        }
     }
 
     /**

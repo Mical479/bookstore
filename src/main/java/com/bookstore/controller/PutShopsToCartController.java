@@ -5,7 +5,6 @@ import com.bookstore.pojo.BookInfo;
 import com.bookstore.pojo.BookUser;
 import com.bookstore.pojo.ShopList;
 import com.bookstore.service.ShoppingCartService;
-import com.bookstore.service.impl.ShoppingCartServiceImpl;
 import com.bookstore.vo.CommonVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -25,8 +25,7 @@ import java.util.List;
  * 创建人：Mical
  */
 @Controller
-@ResponseBody
-public class GetShopsToCartController {
+public class PutShopsToCartController {
 
     @Autowired
     private ShoppingCartService shoppingCartService;
@@ -44,7 +43,8 @@ public class GetShopsToCartController {
     public CommonVO putShopToCart(HttpServletRequest request, @RequestParam(value = "bookNumber", defaultValue = "1") int bookNumber,
                                   @RequestParam("bookId") int bookId){
 
-        Object user = request.getSession().getAttribute("user");
+        HttpSession session = request.getSession();
+        Object user = session.getAttribute("user");
         if (user instanceof BookUser){
             ShopList shopList = new ShopList();
             shopList.setUserId(((BookUser) user).getUserId());
@@ -53,13 +53,16 @@ public class GetShopsToCartController {
             BookInfo bookInfo = new BookInfo();
             bookInfo.setId(bookId);
             shopList.setBookInfo(bookInfo);
-            shoppingCartService.insertShoppsToCart(shopList);
+            shoppingCartService.insertShopsToCart(shopList);
 
-            //获取购物车数量
+            //获取购物车物品数量
             CommonVO commonVO = new CommonVO(CommonEnums.ADD_SHOP_TO_CART_SUCCESS);
             List<ShopList> shopListByUserId = shoppingCartService.getShopListByUserId(shopList.getUserId());
+            int sum = shopListByUserId.stream().mapToInt(ShopList::getBookNumber).sum();
 
-            commonVO.setData(shopListByUserId);
+            //跟新session中的数据
+            session.setAttribute("shoppingNumbers", sum);
+            commonVO.setData(Collections.singletonList(sum));
             return commonVO;
         }else {
             return new CommonVO(CommonEnums.NOT_LOGIN);
