@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 /**
  * 类 名 称：UserController
@@ -25,7 +24,6 @@ public class UserController {
 
     /**
      * 登录操作
-     *
      * @param email
      * @param password
      * @return
@@ -59,6 +57,13 @@ public class UserController {
         }
     }
 
+    /**
+     * 注册操作
+     * @param email
+     * @param name
+     * @param password
+     * @return
+     */
     @PostMapping("/login/register")
     @ResponseBody
     public CommonVO registBookStore(@RequestParam("email") String email, @RequestParam("name") String name,

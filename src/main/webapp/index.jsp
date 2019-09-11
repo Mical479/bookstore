@@ -141,19 +141,25 @@
                             <div class="searchbar__content setting__block">
                                 <div class="content-inner">
                                     <div class="switcher-currency">
-                                        <strong class="label switcher-label">
-                                            <span>个人账户</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <div class="setting__menu">
-                                                    <span><a href="#">我的账户</a></span>
-                                                    <span><a href="#">我的购物车</a></span>
-                                                    <span><a href="/login">登录</a></span>
-                                                    <span><a href="#">注册</a></span>
+                                        <c:choose>
+                                            <c:when test="${!empty sessionScope.user}">
+                                                <strong class="label switcher-label">
+                                                    <span>${user.userName}</span>
+                                                </strong>
+                                                <div class="switcher-options">
+                                                    <div class="switcher-currency-trigger">
+                                                        <div class="setting__menu">
+                                                            <span><a href="#">我的账户</a></span>
+                                                            <span><a href="/pucharse.jsp">我的购物车</a></span>
+                                                            <span><a href="#">退出</a></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="label switcher-label" style="font-size: 20px"><a href="/login">注册/登录</a> </span>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                 </div>
                             </div>

@@ -9,7 +9,7 @@
     </insert>
 
     <select id="selectUser" parameterType="com.bookstore.pojo.BookUser" resultType="com.bookstore.pojo.BookUser">
-        select <include refid="key" /> from book_user where <include refid="values" />
+        select * from book_user where <include refid="values" />
     </select>
 
     <sql id="key">
