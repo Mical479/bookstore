@@ -59,4 +59,5 @@
         <aop:advisor advice-ref="txAdvice"
                      pointcut="execution(* com.bookstore.service.*.*(..))" />
     </aop:config>
+
 </beans>

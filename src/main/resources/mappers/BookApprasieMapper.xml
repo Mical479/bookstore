@@ -50,17 +50,17 @@
     </select>
 
     <!--获取所有评论-->
-    <select id="selectAllAppraisesById" resultType="com.bookstore.pojo.BookAppraise">
+    <select id="selectAllAppraisesById" parameterType="java.lang.Integer" resultType="com.bookstore.pojo.BookAppraise" resultMap="book_appraise">
         select * from book_appraise where book_id = #{book_id} AND order by reply_id, talk_time
 </select>
 
     <!--查询书籍下回复评论数+1 完成-->
-    <select id="countReplayAppraises" resultType="java.lang.Integer">
+    <select id="countReplayAppraises" parameterType="java.lang.Integer" resultType="java.lang.Integer" resultMap="book_appraise">
         SELECT COUNT(id) from book_appraise WHERE book_id = #{book_id} GROUP BY reply_id
     </select>
 
     <!--查询书籍下第一评论数 完成-->
-    <select id="countApprases" resultType="java.lang.Integer">
+    <select id="countApprases" parameterType="java.lang.Integer" resultType="java.lang.Integer" resultMap="book_appraise">
         select COUNT(DISTINCT reply_id) from book_appraise where book_id = #{book_id}
     </select>
 
