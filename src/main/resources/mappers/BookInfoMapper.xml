@@ -13,6 +13,7 @@
         <result column="book_date" property="bookDate" />
         <result column="book_img" property="bookImg" />
         <result column="book_indentification" property="bookIndentification" />
+        <result column="book_stock" property="bookStock" />
         <association property="bookCat" select="com.bookstore.mapper.BookCatMapper.getCat" javaType="com.bookstore.pojo.BookCat" column="book_cat" />
     </resultMap>
 

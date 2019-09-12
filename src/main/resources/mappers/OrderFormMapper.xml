@@ -4,15 +4,18 @@
 <mapper namespace="com.bookstore.mapper.OrderFormMapper">
     <resultMap id="order_form" type="com.bookstore.pojo.OrderForm">
         <id column="order_id" property="orderId"/>
-        <result column="receiver_telephone" property="receiverTelephone"/>
-        <result column="receiver_address" property="receiverAddress"/>
-        <result column="receiver_name" property="receiverName"/>
         <result column="all_cost" property="allCost"/>
         <result column="all_number" property="allNumber"/>
-        <result column="order_create_time" property="orderCreateTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="pay_time" property="payTime" />
+        <result column="alipay_no" property="alipayNo" />
+        <result column="order_status" property="orderStatus" />
         <!-- 一对一：association使用select属性引入另外一条SQL语句 -->
         <association property="bookUser" column="user_id" javaType="com.bookstore.pojo.BookUser">
             <id property="userId" column="user_id"/>
+        </association>
+        <association property="address" column="address_id" javaType="com.bookstore.pojo.Address">
+            <id property="addressId" column="address_id" />
         </association>
     </resultMap>
 
@@ -20,23 +23,25 @@
     <!--根据orderId查询订单详情-->
     <select id="selectByOrderId" parameterType="Integer"
             resultMap="order_form">
-	   SELECT p.*,bookuser.user_id
-	    from order_form p,book_user bookuser
-	    where p.user_id=bookuser.user_id
+	   SELECT p.*,b.*,a.*
+	    from order_form p,book_user b, address a
+	    where p.user_id=b.user_id
 	    and p.order_id=#{orderId}
+	    and p.address_id = a.address_id
 	</select>
 
     <!--根据使用者user_id查询订单列表详情-->
     <select id="selectByUserId" parameterType="Integer"
             resultMap="order_form">
-         SELECT p.*,bookuser.user_id
-	    from order_form p,book_user bookuser
-	    where p.user_id=bookuser.user_id
+         SELECT p.*,b.*,a.*
+	    from order_form p,book_user b, address a
+	    where p.user_id=b.user_id
 	    and p.user_id=#{userId}
+	    and p.address_id = a.address_id
     </select>
 
     <insert id="insertForm" parameterType="com.bookstore.pojo.OrderForm">
-        insert into order_form(order_id,user_id,receiver_telephone,receiver_address,receiver_name,all_cost,all_number,order_create_time)
-        values (#{orderId},#{bookUser.userId},#{receiverTelephone},#{receiverAddress},#{receiverName},#{allCost},#{allNumber},#{orderCreateTime})
+        insert into order_form(order_id,user_id,all_cost,all_number,create_time,pay_time,alipayNo,order_status,address_id)
+        values (#{orderId},#{bookUser.userId},#{allCost},#{allNumber},#{createTime},#{payTime},#{alipayNo},#{orderStatus},#{address.addressId})
     </insert>
 </mapper>

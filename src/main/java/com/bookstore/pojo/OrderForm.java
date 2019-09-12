@@ -11,12 +11,45 @@ import java.util.Date;
 public class OrderForm {
     private int orderId;
     private BookUser bookUser;
-    private String receiverName;
-    private String receiverTelephone;
-    private String receiverAddress;
     private Double allCost;
     private Integer allNumber;
-    private Date orderCreateTime;
+    private Date createTime;
+    private Date payTime;
+    private String alipayNo; // 阿里支付订单号
+    private int orderStatus;
+    private Address address;
+
+    public Date getPayTime() {
+        return payTime;
+    }
+
+    public void setPayTime(Date payTime) {
+        this.payTime = payTime;
+    }
+
+    public String getAlipayNo() {
+        return alipayNo;
+    }
+
+    public void setAlipayNo(String alipayNo) {
+        this.alipayNo = alipayNo;
+    }
+
+    public int getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(int orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public BookUser getBookUser() {
         return bookUser;
@@ -32,30 +65,6 @@ public class OrderForm {
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
-    }
-
-    public String getReceiverName() {
-        return receiverName;
-    }
-
-    public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName;
-    }
-
-    public String getReceiverTelephone() {
-        return receiverTelephone;
-    }
-
-    public void setReceiverTelephone(String receiverTelephone) {
-        this.receiverTelephone = receiverTelephone;
-    }
-
-    public String getReceiverAddress() {
-        return receiverAddress;
-    }
-
-    public void setReceiverAddress(String receiverAddress) {
-        this.receiverAddress = receiverAddress;
     }
 
     public Double getAllCost() {
@@ -74,11 +83,11 @@ public class OrderForm {
         this.allNumber = allNumber;
     }
 
-    public Date getOrderCreateTime() {
-        return orderCreateTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setOrderCreateTime(Date orderCreateTime) {
-        this.orderCreateTime = orderCreateTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

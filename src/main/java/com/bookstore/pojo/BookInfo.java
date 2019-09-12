@@ -19,6 +19,15 @@ public class BookInfo implements Serializable {
     private String bookImg; //书籍封面
     private BookCat bookCat; //书籍分类
     private int bookIndentification; //书籍标识
+    private int book_stock; //书籍库存
+
+    public int getBook_stock() {
+        return book_stock;
+    }
+
+    public void setBook_stock(int book_stock) {
+        this.book_stock = book_stock;
+    }
 
     public int getBookIndentification() {
         return bookIndentification;
