@@ -4,6 +4,7 @@ import com.bookstore.pojo.BookUser;
 import com.bookstore.pojo.ShopList;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,8 +37,33 @@ public interface ShopListMapper {
     ShopList selectShopListByUserIdAndBookId(@Param("userId") int userId, @Param("bookId") int bookId);
 
     /**
-     * 跟新用户的购物车
+     * 更新用户的购物车
      * @param shopList
      */
     void updateShopList(ShopList shopList);
+
+    /**
+     * 根据购物车的id删除某个商品
+     * @param shopList
+     */
+    int deleteShops(ShopList shopList);
+
+    /**
+     * 根据用户id和购物车商品id查询
+     * @param userId
+     * @param shopId
+     * @return
+     */
+    ShopList selectByUserIdAndShopId(@Param("userId") int userId, @Param("shopId") int shopId);
+
+    /**
+     * 根据用户Id和shopId更新书籍数量
+     * @param bookNumber
+     * @param joinShopTime
+     * @param userId
+     * @param shopId
+     * @return
+     */
+    int updateBookNumberByUserIdAndShopId(@Param("bookNumber") int bookNumber, @Param("joinShopTime")Date joinShopTime,
+                                          @Param("userId") int userId, @Param("shopId") int shopId);
 }

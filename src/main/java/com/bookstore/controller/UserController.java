@@ -8,10 +8,12 @@ import com.bookstore.service.UserService;
 import com.bookstore.vo.CommonVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -91,6 +93,7 @@ public class UserController {
             return new CommonVO(CommonEnums.USER_NAME_HAVE_BEEN_REGISTERED);
         }
 
+        user.setCreateTime(new Date());
         user.setUserName(name);
         user.setUserPassword(password);
         try {
@@ -107,10 +110,12 @@ public class UserController {
      * @return
      */
     @RequestMapping("/bookstore/shoppingcart")
-    public String goShopingCart(HttpServletRequest request){
+    public String goShopingCart(HttpServletRequest request, Model model){
         HttpSession session = request.getSession();
         Object user = session.getAttribute("user");
         if (user instanceof BookUser){
+            List<ShopList> shopListByUserId = shoppingCartService.getShopListByUserId(((BookUser) user).getUserId());
+            model.addAttribute("shopList", shopListByUserId);
             return "pucharse";
         }else {
             return "redirect:/index";

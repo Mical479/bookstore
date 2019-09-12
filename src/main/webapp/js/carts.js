@@ -135,12 +135,27 @@ $(function () {
             $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
             $priceTotal = $count*parseInt($price.substring(1));
-        $inputVal.val($count);
-        $priceTotalObj.html('￥'+$priceTotal);
-        if($inputVal.val()>1 && $obj.hasClass('reSty')){
-            $obj.removeClass('reSty');
-        }
-        totalMoney();
+
+        $.ajax({
+            url: "/bookstore/updateShop",
+            data: {
+                shopId: $(this).next("input").val(),
+                bookNumber: $count
+            },
+            type: "POST",
+            success: function (data) {
+                 if (data.code == 9){
+                     $inputVal.val($count);
+                     $priceTotalObj.html('￥'+$priceTotal);
+                     if($inputVal.val()>1 && $obj.hasClass('reSty')){
+                         $obj.removeClass('reSty');
+                     }
+                     totalMoney();
+                 } else {
+                     alert(data.msg);
+                 }
+            }
+        });
     });
 
     $reduce.click(function () {
@@ -149,17 +164,31 @@ $(function () {
             $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
             $priceTotal = $count*parseInt($price.substring(1));
-        if($inputVal.val()>1){
-            $inputVal.val($count);
-            $priceTotalObj.html('￥'+$priceTotal);
-        }
-        if($inputVal.val()==1 && !$(this).hasClass('reSty')){
-            $(this).addClass('reSty');
-        }
-        totalMoney();
+        $.ajax({
+            url: "/bookstore/updateShop",
+            data: {
+                shopId: $(this).nextAll("input")[1].value,
+                bookNumber: $count
+            },
+            type: "POST",
+            success: function (data) {
+                if (data.code == 9){
+                    if($inputVal.val()>1){
+                        $inputVal.val($count);
+                        $priceTotalObj.html('￥'+$priceTotal);
+                    }
+                    if($inputVal.val()==1 && !$(this).hasClass('reSty')){
+                        $(this).addClass('reSty');
+                    }
+                    totalMoney();
+                } else {
+                    alert(data.msg);
+                }
+            }
+        });
     });
 
-    $all_sum.keyup(function () {
+    $all_sum.blur(function () {
         var $count = 0,
             $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
@@ -170,20 +199,37 @@ $(function () {
         $(this).val($(this).val().replace(/\D|^0/g,''));
         $count = $(this).val();
         $priceTotal = $count*parseInt($price.substring(1));
-        $(this).attr('value',$count);
-        $priceTotalObj.html('￥'+$priceTotal);
-        totalMoney();
-    })
+
+        $.ajax({
+            url: "/bookstore/updateShop",
+            data: {
+                shopId: $(this).parent().find("input")[1].value,
+                bookNumber: $count
+            },
+            type: "POST",
+            success: function (data) {
+                if (data.code == 9){
+                    $(this).attr('value',$count);
+                    $priceTotalObj.html('￥'+$priceTotal);
+                    totalMoney();
+                } else {
+                    alert(data.msg);
+                }
+            }
+        });
+    });
 
     //======================================移除商品========================================
 
     var $order_lists = null;
     var $order_content = '';
+    var delVal = '';
     $('.delBtn').click(function () {
         $order_lists = $(this).parents('.order_lists');
         $order_content = $order_lists.parents('.order_content');
         $('.model_bg').fadeIn(300);
         $('.my_model').fadeIn(300);
+        delVal = $(this).next("input").val();
     });
 
     //关闭模态框
@@ -199,14 +245,27 @@ $(function () {
     }
     //确定按钮，移除商品
     $('.dialog-sure').click(function () {
-        $order_lists.remove();
-        if($order_content.html().trim() == null || $order_content.html().trim().length == 0){
-            $order_content.parents('.cartBox').remove();
-        }
-        closeM();
-        $sonCheckBox = $('.son_check');
-        totalMoney();
-    })
+        $.ajax({
+            url: "/bookstore/delshop",
+            data: {
+                shopId: delVal
+            },
+            type: "POST",
+            success: function (data) {
+                if (data.code == 12) {
+                    $order_lists.remove();
+                    if($order_content.html().trim() == null || $order_content.html().trim().length == 0){
+                        $order_content.parents('.cartBox').remove();
+                    }
+                    closeM();
+                    $sonCheckBox = $('.son_check');
+                    totalMoney();
+                } else {
+                    alert(data.msg);
+                }
+            }
+        })
+    });
 
     //======================================总计==========================================
 
@@ -236,7 +295,6 @@ $(function () {
                 calBtn.removeClass('btn_sty');
             }
         }
-    }
-
+    };
 
 });

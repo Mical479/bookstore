@@ -54,4 +54,15 @@ public class ShopList {
     public void setJoinShopTime(Date joinShopTime) {
         this.joinShopTime = joinShopTime;
     }
+
+    @Override
+    public String toString() {
+        return "ShopList{" +
+                "shopId=" + shopId +
+                ", userId=" + userId +
+                ", bookInfo=" + bookInfo +
+                ", bookNumber=" + bookNumber +
+                ", joinShopTime=" + joinShopTime +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package com.bookstore.service;
 
+import com.bookstore.pojo.BookUser;
 import com.bookstore.pojo.ShopList;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,4 +17,8 @@ public interface ShoppingCartService {
     void insertShopsToCart(ShopList shopList);
 
     List<ShopList> getShopListByUserId(int userId);
+
+    boolean delMyShop(ShopList shopList, BookUser user);
+
+    boolean updateShops(int bookNumber, BookUser user, int shopId);
 }

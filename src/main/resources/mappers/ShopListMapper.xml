@@ -10,21 +10,38 @@
         <association property="bookInfo" column="book_id" select="com.bookstore.mapper.BookInfoMapper.selectByBookId"
                      javaType="com.bookstore.pojo.BookInfo" />
     </resultMap>
+    <!--将商品插入购物车-->
     <insert id="insertShops" parameterType="com.bookstore.pojo.ShopList">
         insert into shop_list(user_id, book_id, book_number, join_shop_time) values
         (#{userId}, #{bookInfo.id}, #{bookNumber}, #{joinShopTime})
     </insert>
 
+    <!--根据用户id查询该用户的所有购物车商品-->
     <select id="selectShopListByUserId" resultMap="myMap">
         select * from shop_list where user_id = #{userId}
     </select>
 
-
+    <!--根据用户id和书籍ID查询-->
     <select id="selectShopListByUserIdAndBookId" resultMap="myMap">
         select * from shop_list where user_id = #{userId} and book_id = #{bookId}
     </select>
-    
+
+    <select id="selectByUserIdAndShopId" resultMap="myMap">
+        select * from shop_list where user_id = #{userId} and shop_id = #{shopId}
+    </select>
+
+    <!--更新购物车的数量-->
     <update id="updateShopList" parameterType="com.bookstore.pojo.ShopList">
-        update shop_list set book_number = #{bookNumber} and join_shop_time = #{joinShopTime} where shop_id = #{shopId};
+        update shop_list set book_number = #{bookNumber}, join_shop_time = #{joinShopTime} where shop_id = #{shopId};
+    </update>
+
+    <!--删除购物车的某件商品-->
+    <delete id="deleteShops" parameterType="com.bookstore.pojo.ShopList">
+        delete from shop_list where shop_id = #{shopId}
+    </delete>
+
+    <!--根据userId和shopId更新书籍的数量-->
+    <update id="updateBookNumberByUserIdAndShopId">
+        update shop_list set book_number = #{bookNumber}, join_shop_time = #{joinShopTime} where user_id = #{userId} and shop_id=#{shopId};
     </update>
 </mapper>

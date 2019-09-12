@@ -17,7 +17,10 @@ public enum CommonEnums {
     REGISTER_SUCCESS(7, "注册成功"),
     REGISTER_FAILED(8, "注册失败"),
     ADD_SHOP_TO_CART_SUCCESS(9, "加入购物车成功"),
-    NOT_LOGIN(10, "未登录")
+    ADD_SHOP_TO_CART_FAILED(13, "加入购物车失败"),
+    NOT_LOGIN(10, "未登录"),
+    DELETE_SHOP_FAILED(11, "删除商品失败"),
+    DELETE_SHOP_SUCCESS(12, "删除商品成功"),
     ;
 
     private Integer code;
