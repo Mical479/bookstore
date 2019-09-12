@@ -85,11 +85,9 @@ public class ShopCartController {
         Object user = session.getAttribute("user");
         //判断用户是否登录
         if (user instanceof BookUser) {
-            ShopList shopList = new ShopList();
-            shopList.setShopId(shopId);
             try {
                 //是否插入成功
-                boolean b = shoppingCartService.delMyShop(shopList, (BookUser) user);
+                boolean b = shoppingCartService.delMyShop(shopId, (BookUser) user);
                 if (b) {
                     List<ShopList> shopListByUserId = shoppingCartService.getShopListByUserId(((BookUser) user).getUserId());
                     session.setAttribute("shoppingNumbers", shopListByUserId.stream().mapToInt(ShopList::getBookNumber).sum());

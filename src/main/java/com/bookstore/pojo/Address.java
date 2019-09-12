@@ -62,4 +62,16 @@ public class Address {
     public void setIs_default(int is_default) {
         this.is_default = is_default;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", userId=" + userId +
+                ", receiverName='" + receiverName + '\'' +
+                ", receiverPhone='" + receiverPhone + '\'' +
+                ", receiverAddress='" + receiverAddress + '\'' +
+                ", is_default=" + is_default +
+                '}';
+    }
 }

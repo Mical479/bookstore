@@ -297,4 +297,31 @@ $(function () {
         }
     };
 
+    $('.calBtn a').click(function () {
+        if($('.total_text').text().split('￥')[1] > 0){
+            var shopId = [];
+            $sonCheckBox.each(function (index) {
+                if ($(this).is(':checked')) {
+                    shopId[index] = $(this).parent().parent().find('input[type=hidden]')[0].value
+                }
+            });
+            shopId = shopId.filter(function (value) {
+               return value && value.trim();
+            });
+            $.ajax({
+                url: "/bookstore/do_order",
+                contentType: "application/json",
+                data: JSON.stringify(shopId),
+                type: "POST",
+                success: function (data) {
+                    if (data.code == 15) {
+                        window.location.href = "/alipay/pay";
+                    }else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        }
+    })
+
 });

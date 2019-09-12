@@ -44,9 +44,8 @@ public interface ShopListMapper {
 
     /**
      * 根据购物车的id删除某个商品
-     * @param shopList
      */
-    int deleteShops(ShopList shopList);
+    int deleteShops(int shopId);
 
     /**
      * 根据用户id和购物车商品id查询

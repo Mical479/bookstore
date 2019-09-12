@@ -18,7 +18,7 @@ public interface ShoppingCartService {
 
     List<ShopList> getShopListByUserId(int userId);
 
-    boolean delMyShop(ShopList shopList, BookUser user);
+    boolean delMyShop(int shopId, BookUser user);
 
     boolean updateShops(int bookNumber, BookUser user, int shopId);
 }

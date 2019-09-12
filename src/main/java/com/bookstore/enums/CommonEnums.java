@@ -21,6 +21,9 @@ public enum CommonEnums {
     NOT_LOGIN(10, "未登录"),
     DELETE_SHOP_FAILED(11, "删除商品失败"),
     DELETE_SHOP_SUCCESS(12, "删除商品成功"),
+    PUCHARSE_SUCCESS(13, "购买成功"),
+    PUCHARSE_FAILED(14, "购买失败"),
+    SUBMIT_TO_APLI(15, "正在提交支付订单")
     ;
 
     private Integer code;

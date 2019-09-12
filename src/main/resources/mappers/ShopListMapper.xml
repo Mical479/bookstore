@@ -36,7 +36,7 @@
     </update>
 
     <!--删除购物车的某件商品-->
-    <delete id="deleteShops" parameterType="com.bookstore.pojo.ShopList">
+    <delete id="deleteShops" parameterType="int">
         delete from shop_list where shop_id = #{shopId}
     </delete>
 

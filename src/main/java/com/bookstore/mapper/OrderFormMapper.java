@@ -21,4 +21,10 @@ public interface OrderFormMapper {
 
     /*新建订单*/
     void insertForm(OrderForm orderForm);
+
+    /**
+     * 跟新订单
+     * @param orderForm
+     */
+    void updateForm(OrderForm orderForm);
 }

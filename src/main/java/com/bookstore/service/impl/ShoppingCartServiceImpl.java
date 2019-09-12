@@ -54,15 +54,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     /**
      * 删除商品
-     *
-     * @param shopList
      */
     @Override
-    public boolean delMyShop(ShopList shopList, BookUser user) {
-
-        ShopList shopList1 = shopListMapper.selectByUserIdAndShopId(user.getUserId(), shopList.getShopId());
+    public boolean delMyShop(int shopId, BookUser user) {
+        ShopList shopList1 = shopListMapper.selectByUserIdAndShopId(user.getUserId(), shopId);
         if (shopList1 != null) {
-            int i = shopListMapper.deleteShops(shopList);
+            int i = shopListMapper.deleteShops(shopId);
             return i > 0;
         } else {
             return false;

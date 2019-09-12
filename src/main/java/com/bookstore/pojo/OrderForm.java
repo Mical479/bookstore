@@ -9,7 +9,7 @@ import java.util.Date;
  * 创建人：Mical
  */
 public class OrderForm {
-    private int orderId;
+    private long orderId;
     private BookUser bookUser;
     private Double allCost;
     private Integer allNumber;
@@ -18,6 +18,14 @@ public class OrderForm {
     private String alipayNo; // 阿里支付订单号
     private int orderStatus;
     private Address address;
+
+    public long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
+    }
 
     public Date getPayTime() {
         return payTime;
@@ -57,10 +65,6 @@ public class OrderForm {
 
     public void setBookUser(BookUser bookUser) {
         this.bookUser = bookUser;
-    }
-
-    public int getOrderId() {
-        return orderId;
     }
 
     public void setOrderId(int orderId) {

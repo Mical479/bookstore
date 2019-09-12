@@ -17,8 +17,8 @@
     </select>
 
     <insert id="insertOrder" parameterType="com.bookstore.pojo.OrderDetails">
-        insert into order_details(id,order_id,book_id,book_number,book_price)
-        values (#{id},#{orderId},#{bookInfo.id},#{bookNumber},#{bookPrice})
+        insert into order_details(order_id,book_id,book_number,book_price)
+        values (#{orderId},#{bookInfo.id},#{bookNumber},#{bookPrice})
     </insert>
 
 </mapper>
