@@ -67,6 +67,7 @@ public class BookCatServiceImpl implements BookCatService {
      * @param myList 查询出的分类列表
      * @return
      */
+    @Autowired
     private List<BookCat> getCats(List<BookCat> myList) {
 
         //由查询出的二级目录先过滤出根目录

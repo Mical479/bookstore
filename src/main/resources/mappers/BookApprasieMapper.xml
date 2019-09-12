@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookstore.mapper.BookAppraiseMapper">
+    <resultMap id="book_appraise" type="com.bookstore.pojo.BookAppraise">
+        <id property="id" column="id"/>
+        <result column="book_id" property="bookId" />
+        <result column="talk_time" property="talkTime" />
+        <result column="reply_id" property="replyId"/>
+        <result column="talk_content" property="talkContent"/>
+        <!-- 一对一：association使用select属性引入另外一条SQL语句 -->
+        <association property="bookUser" column="user_id" javaType="com.bookstore.pojo.BookUser">
+            <id property="userId" column="user_id"/>
+        </association>
+        <!-- 一对一：association使用select属性引入另外一条SQL语句 -->
+        <association property="replyUser" column="user_id" javaType="com.bookstore.pojo.BookUser">
+            <id property="userId" column="reply_user_id"/>
+        </association>
+    </resultMap>
+    <!-- 插入新评论-->
+    <insert id="insertNewContent" parameterType="com.bookstore.pojo.BookAppraise" >
+    insert into book_appraise(id,book_id,user_id,reply_user_id,talk_time,talk_content)
+    values (#{id},#{bookId},#{bookUser.userId},0,#{talkTime},#{talkContent})
+   </insert>
+
+    <!--回复评论-->
+    <insert id="insertReplyContent" parameterType="com.bookstore.pojo.BookAppraise" >
+    insert into book_appraise(id,book_id,user_id,reply_user_id,talk_time,talk_content)
+    values (#{id},#{bookId},#{bookUser.userId},#{replyUser.userId},#{talkTime},#{talkContent})
+   </insert>
+
+    <!--查看评论-->
+    <select id="selectById" resultType="com.bookstore.pojo.BookAppraise" resultMap="book_appraise">
+        select * from book_appraise
+            where id = #{id}
+    </select>
+
+    <!--删除评论-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from book_appraise
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!--根据replyId查找回复信息-->
+    <select id="selectByReplyId" resultType="com.bookstore.pojo.BookAppraise" resultMap="book_appraise">
+        select * from book_appraise
+            where reply_id = #{replyId}
+            order by talk_time asc
+    </select>
+
+    <!--获取所有评论-->
+    <select id="selectAllAppraisesById" parameterType="java.lang.Integer" resultType="com.bookstore.pojo.BookAppraise" resultMap="book_appraise">
+        select * from book_appraise where book_id = #{book_id} AND order by reply_id, talk_time
+</select>
+
+    <!--查询书籍下回复评论数+1 完成-->
+    <select id="countReplayAppraises" parameterType="java.lang.Integer" resultType="java.lang.Integer" resultMap="book_appraise">
+        SELECT COUNT(id) from book_appraise WHERE book_id = #{book_id} GROUP BY reply_id
+    </select>
+
+    <!--查询书籍下第一评论数 完成-->
+    <select id="countApprases" parameterType="java.lang.Integer" resultType="java.lang.Integer" resultMap="book_appraise">
+        select COUNT(DISTINCT reply_id) from book_appraise where book_id = #{book_id}
+    </select>
+
+</mapper>
