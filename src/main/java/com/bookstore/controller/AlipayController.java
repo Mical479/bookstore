@@ -113,10 +113,11 @@ public class AlipayController {
             orderInfo.setOrderStatus(1); //设置订单状态为支付成功
             orderInfo.setPayTime(new Date());
 
-            orderService.updateOrder(orderInfo);
-            System.out.println("前往支付成功页面");
+            orderService.updateOrder(orderInfo); //更新订单状态以及减库存
+
+            request.getSession().removeAttribute("orderForm");
             mav.addObject("orderNo", orderNo);
-            mav.setViewName("index");
+            mav.setViewName("forward:/bookstore/userpage/order");
         } else {
             System.out.println("前往支付失败页面");
             mav.setViewName("login");

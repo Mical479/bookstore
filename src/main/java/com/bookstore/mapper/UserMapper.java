@@ -11,4 +11,10 @@ import com.bookstore.pojo.BookUser;
 public interface UserMapper {
     void insertUser(BookUser bookUser);
     BookUser selectUser(BookUser bookUser);
+
+    /**
+     * 更新用户的头像、电话、邮件等信息
+     * @param bookUser
+     */
+    void updateUser(BookUser bookUser);
 }

@@ -94,4 +94,19 @@ public class OrderForm {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        return "OrderForm{" +
+                "orderId=" + orderId +
+                ", bookUser=" + bookUser +
+                ", allCost=" + allCost +
+                ", allNumber=" + allNumber +
+                ", createTime=" + createTime +
+                ", payTime=" + payTime +
+                ", alipayNo='" + alipayNo + '\'' +
+                ", orderStatus=" + orderStatus +
+                ", address=" + address +
+                '}';
+    }
 }

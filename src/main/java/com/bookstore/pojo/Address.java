@@ -13,7 +13,7 @@ public class Address {
     private String receiverName;
     private String receiverPhone;
     private String receiverAddress;
-    private int is_default;
+    private int isDefault;
 
     public int getAddressId() {
         return addressId;
@@ -55,12 +55,12 @@ public class Address {
         this.receiverAddress = receiverAddress;
     }
 
-    public int getIs_default() {
-        return is_default;
+    public int getIsDefault() {
+        return isDefault;
     }
 
-    public void setIs_default(int is_default) {
-        this.is_default = is_default;
+    public void setIsDefault(int isDefault) {
+        this.isDefault = isDefault;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class Address {
                 ", receiverName='" + receiverName + '\'' +
                 ", receiverPhone='" + receiverPhone + '\'' +
                 ", receiverAddress='" + receiverAddress + '\'' +
-                ", is_default=" + is_default +
+                ", is_default=" + isDefault +
                 '}';
     }
 }

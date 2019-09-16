@@ -56,4 +56,15 @@ public class OrderDetails {
     public void setBookNumber(Integer bookNumber) {
         this.bookNumber = bookNumber;
     }
+
+    @Override
+    public String toString() {
+        return "OrderDetails{" +
+                "id=" + id +
+                ", orderId=" + orderId +
+                ", bookInfo=" + bookInfo +
+                ", bookNumber=" + bookNumber +
+                ", bookPrice=" + bookPrice +
+                '}';
+    }
 }

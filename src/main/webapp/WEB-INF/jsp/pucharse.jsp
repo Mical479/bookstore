@@ -25,7 +25,7 @@
 
     <!-- Cusom css -->
     <link rel="stylesheet" href="/css/custom.css">
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
 
     <!-- Modernizer js -->
     <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -55,29 +55,30 @@
                 <div class="col-md-6 col-sm-6 col-6 col-lg-2">
                     <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
                         <li class="wishlist"><a href="#"></a></li>
-                        <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
+                        <li class="setting__bar__icon">
+                            <c:if test="${empty sessionScope.user.picture}">
+                                <a class="setting__active" href="javascript:;"
+                                   style="background-image: url('/images/head-icons/head_icon.jpg')"></a>
+                            </c:if>
+                            <c:if test="${!empty sessionScope.user}">
+                                <a class="setting__active" href="javascript:;"
+                                   style="background-image: url('${sessionScope.user.picture}')"></a>
+                            </c:if>
+
                             <div class="searchbar__content setting__block">
                                 <div class="content-inner">
                                     <div class="switcher-currency">
-                                        <c:choose>
-                                            <c:when test="${!empty sessionScope.user}">
-                                                <strong class="label switcher-label">
-                                                    <span>${user.userName}</span>
-                                                </strong>
-                                                <div class="switcher-options">
-                                                    <div class="switcher-currency-trigger">
-                                                        <div class="setting__menu">
-                                                            <span><a href="#">我的账户</a></span>
-                                                            <span><a href="#">退出</a></span>
-                                                        </div>
-                                                    </div>
+                                        <strong class="label switcher-label">
+                                            <span>${user.userName}</span>
+                                        </strong>
+                                        <div class="switcher-options">
+                                            <div class="switcher-currency-trigger">
+                                                <div class="setting__menu">
+                                                    <span><a href="/bookstore/userpage">我的账户</a></span>
+                                                    <span><a href="#">退出</a></span>
                                                 </div>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <span class="label switcher-label" style="font-size: 20px"><a
-                                                href="/login">注册/登录</a> </span>
-                                            </c:otherwise>
-                                        </c:choose>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -111,55 +112,55 @@
 
     <div class="cartBox">
         <%--<div class="shop_info">--%>
-            <%--<div class="all_check">--%>
-                <%--<!--店铺全选-->--%>
-                <%--<input type="checkbox" id="shop_a" class="shopChoice">--%>
-                <%--<label for="shop_a" class="shop"></label>--%>
-            <%--</div>--%>
-            <%--<div class="shop_name">--%>
-                <%--店铺：--%>
-                <%--<a href="javascript:;">搜猎人艺术生活</a>--%>
-            <%--</div>--%>
+        <%--<div class="all_check">--%>
+        <%--<!--店铺全选-->--%>
+        <%--<input type="checkbox" id="shop_a" class="shopChoice">--%>
+        <%--<label for="shop_a" class="shop"></label>--%>
+        <%--</div>--%>
+        <%--<div class="shop_name">--%>
+        <%--店铺：--%>
+        <%--<a href="javascript:;">搜猎人艺术生活</a>--%>
+        <%--</div>--%>
         <%--</div>--%>
         <div class="order_content">
             <c:forEach items="${shopList}" var="shop" varStatus="status">
                 <ul class="order_lists">
-                <li class="list_chk">
-                    <input type="checkbox" id="checkbox_${status.index}" class="son_check">
-                    <label for="checkbox_${status.index}"></label>
-                </li>
-                <li class="list_con">
-                    <div class="list_img">
-                        <a href="javascript:;"><img src="${shop.bookInfo.bookImg}" alt=""></a>
-                    </div>
-                    <div class="list_text">
-                        <a href="javascript:;">${shop.bookInfo.bookDesc}</a>
-                    </div>
-                </li>
-                <li class="list_info">
-                    <p>${shop.bookInfo.bookName}</p>
-                </li>
-                <li class="list_price">
-                    <p class="price">￥${shop.bookInfo.bookPrice}</p>
-                </li>
-                <li class="list_amount">
-                    <div class="amount_box">
-                        <a href="javascript:;" class="reduce reSty">-</a>
-                        <input type="text" value="${shop.bookNumber}" class="sum" style="height: 25px">
-                        <a href="javascript:;" class="plus">+</a>
-                        <input type="hidden" value="${shop.shopId}" />
-                    </div>
-                </li>
-                <li class="list_sum">
-                    <p class="sum_price">￥${shop.bookInfo.bookPrice * shop.bookNumber}</p>
-                </li>
-                <li class="list_op">
-                    <p class="del">
-                        <a href="javascript:;" class="delBtn btn btn-sm btn-danger">移除商品</a>
-                        <input type="hidden" value="${shop.shopId}" />
-                    </p>
-                </li>
-            </ul>
+                    <li class="list_chk">
+                        <input type="checkbox" id="checkbox_${status.index}" class="son_check">
+                        <label for="checkbox_${status.index}"></label>
+                    </li>
+                    <li class="list_con">
+                        <div class="list_img">
+                            <a href="javascript:;"><img src="${shop.bookInfo.bookImg}" alt=""></a>
+                        </div>
+                        <div class="list_text">
+                            <a href="javascript:;">${shop.bookInfo.bookDesc}</a>
+                        </div>
+                    </li>
+                    <li class="list_info">
+                        <p>${shop.bookInfo.bookName}</p>
+                    </li>
+                    <li class="list_price">
+                        <p class="price">￥${shop.bookInfo.bookPrice}</p>
+                    </li>
+                    <li class="list_amount">
+                        <div class="amount_box">
+                            <a href="javascript:;" class="reduce reSty">-</a>
+                            <input type="text" value="${shop.bookNumber}" class="sum" style="height: 25px">
+                            <a href="javascript:;" class="plus">+</a>
+                            <input type="hidden" value="${shop.shopId}"/>
+                        </div>
+                    </li>
+                    <li class="list_sum">
+                        <p class="sum_price">￥${shop.bookInfo.bookPrice * shop.bookNumber}</p>
+                    </li>
+                    <li class="list_op">
+                        <p class="del">
+                            <a href="javascript:;" class="delBtn btn btn-sm btn-danger">移除商品</a>
+                            <input type="hidden" value="${shop.shopId}"/>
+                        </p>
+                    </li>
+                </ul>
             </c:forEach>
         </div>
     </div>

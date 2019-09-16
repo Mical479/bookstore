@@ -43,8 +43,14 @@ public interface BookInfoMapper {
 
     /**
      * 随机查找数据
-     * @param count 数量
      * @return
      */
     List<BookInfo> selectRandBooks();
+
+    /**
+     * 根据书籍id更新书籍库存
+     * @param number
+     * @param id
+     */
+    void updateBookStock(@Param("number") int number, @Param("id") int id);
 }

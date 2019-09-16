@@ -22,7 +22,7 @@
                 <form>
                     <p id="login-title">欢迎访问本书城</p>
                     <div class="lowin-group">
-                        <label>账户 <a href="#" class="login-back-link">登录?</a></label>
+                        <label>邮箱 <a href="#" class="login-back-link">登录?</a></label>
                         <input type="email" autocomplete="email" name="email" class="lowin-input" id="myEmail">
                     </div>
                     <div class="lowin-group password-group">

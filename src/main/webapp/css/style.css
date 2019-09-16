@@ -1845,10 +1845,12 @@ Header Styles
 	  position: relative;
 	}
       .header__area .header__sidebar__right > li.setting__bar__icon > a {
-        background: transparent url("../images/icons/icon_setting.png") no-repeat scroll left center;
+        background: transparent no-repeat scroll left center;
+        border-radius: 15px;
+        background-size: auto 30px;
         cursor: pointer;
         font-size: 0;
-        height: 35px;
+        height: 30px;
         position: relative;
         width: 30px; }
     .header__area .header__sidebar__right > li.click__menu {
@@ -1898,7 +1900,8 @@ Header Styles
 		  background: rgba(0, 0, 0, 0) url("../images/icons/cart_white.png") no-repeat scroll 0 center;
 		}
 		.is-sticky.header__area .header__sidebar__right > li.setting__bar__icon > a {
-		  background: transparent url("../images/icons/icon_setting_white.png") no-repeat scroll left center;
+		  background: transparent no-repeat scroll left center;
+          background-size: auto 30px;
 		}
 .mainmenu__nav .meninmenu li:first-child a {
   padding-left: 0;
@@ -1913,7 +1916,8 @@ Header Styles
   background: rgba(0, 0, 0, 0) url("../images/icons/button-wishlist_white.png") no-repeat scroll 0 center;
 }
 .oth-page.header__area .header__sidebar__right > li.setting__bar__icon > a {
-  background: transparent url("../images/icons/icon_setting_white.png") no-repeat scroll left center;
+  background: transparent no-repeat scroll left center;
+  background-size: auto 30px;
 }
 .oth-page.header__area .header__sidebar__right > li.shopcart > a {
   background: rgba(0, 0, 0, 0) url("../images/icons/cart_white.png") no-repeat scroll 0 center;
@@ -4611,7 +4615,7 @@ h3.widget-title-modal {
 }
   .gallery__menu button {
     background: #fff none repeat scroll 0 0;
-    color: color: #333;
+    color: #333;
     border: medium none;
     display: inline-block;
     font-size: 12px;

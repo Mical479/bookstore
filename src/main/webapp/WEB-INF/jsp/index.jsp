@@ -59,11 +59,19 @@
                         <li class="shop_search"><a class="search__active" href="javascript:;"></a></li>
                         <li class="wishlist"><a href="javascript:;"></a></li>
                         <c:if test="${!empty sessionScope.user}">
-                                <li class="shopcart"><a class="cartbox_active" href="javascript: window.location.href='/bookstore/shoppingcart';"><span
-                                        class="product_qun" id="cart-number">${sessionScope.shoppingNumbers}</span></a>
-                                </li>
+                            <li class="shopcart"><a class="cartbox_active" href="/bookstore/shoppingcart"><span
+                                    class="product_qun" id="cart-number">${sessionScope.shoppingNumbers}</span></a>
+                            </li>
                         </c:if>
-                        <li class="setting__bar__icon"><a class="setting__active" href="javascript:;"></a>
+                        <li class="setting__bar__icon">
+                            <c:if test="${empty sessionScope.user.picture}">
+                                <a class="setting__active" href="javascript:;"
+                                   style="background-image: url('/images/head-icons/head_icon.jpg')"></a>
+                            </c:if>
+                            <c:if test="${!empty sessionScope.user}">
+                                <a class="setting__active" href="javascript:;"
+                                   style="background-image: url('${sessionScope.user.picture}')"></a>
+                            </c:if>
                             <div class="searchbar__content setting__block">
                                 <div class="content-inner">
                                     <div class="switcher-currency">
@@ -75,7 +83,7 @@
                                                 <div class="switcher-options">
                                                     <div class="switcher-currency-trigger">
                                                         <div class="setting__menu">
-                                                            <span><a href="javascript:;">我的账户</a></span>
+                                                            <span><a href="/bookstore/userpage">我的账户</a></span>
                                                             <span><a href="/bookstore/shoppingcart">我的购物车</a></span>
                                                             <span><a href="javascript:;">退出</a></span>
                                                         </div>
@@ -95,9 +103,6 @@
                 </div>
             </div>
 
-            <div class="mobile-menu d-block d-lg-none">
-            </div>
-            <!-- Mobile Menu -->
         </div>
     </header>
     <!-- //Header -->
@@ -1297,9 +1302,12 @@
                 }
             });
         });
-        $("#cart-number").click(function(){
+        $("#cart-number").click(function () {
             window.location.href = "/bookstore/shoppingcart";
-        })
+        });
+        <c:if test="${!empty sessionScope.user.picture}">
+        $(".setting__active").css("background", "http://b-ssl.duitang.com/uploads/item/201711/10/20171110225150_ym2jw.jpeg");
+        </c:if>
     });
     </c:if>
     <c:if test="${empty sessionScope.user}">

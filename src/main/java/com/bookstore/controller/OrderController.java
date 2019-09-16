@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,10 @@ public class OrderController {
         Object user = request.getSession().getAttribute("user");
         if (user instanceof BookUser) {
             try {
-                OrderForm orderForm = orderService.insertOrder(list, (BookUser) user);
+                OrderForm orderForm = orderService.insertOrder(list, (BookUser) user, request);
+                if (orderForm == null){
+                    return new CommonVO(CommonEnums.NO_DEFAULT_ADDRESS);
+                }
                 request.getSession().setAttribute("orderForm", orderForm);
                 return new CommonVO(CommonEnums.SUBMIT_TO_APLI);
             } catch (Exception e) {
@@ -50,4 +54,5 @@ public class OrderController {
         }
         return new CommonVO(CommonEnums.NOT_LOGIN);
     }
+
 }

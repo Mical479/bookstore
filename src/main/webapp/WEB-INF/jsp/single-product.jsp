@@ -1,6 +1,5 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -67,7 +66,15 @@
                                 <!-- End Shopping Cart -->
                             </li>
                         </c:if>
-                        <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
+                        <li class="setting__bar__icon">
+                            <c:if test="${empty sessionScope.user.picture}">
+                                <a class="setting__active" href="javascript:;"
+                                   style="background-image: url('/images/head-icons/head_icon.jpg')"></a>
+                            </c:if>
+                            <c:if test="${!empty sessionScope.user}">
+                                <a class="setting__active" href="javascript:;"
+                                   style="background-image: url('${sessionScope.user.picture}')"></a>
+                            </c:if>
                             <div class="searchbar__content setting__block">
                                 <div class="content-inner">
                                     <div class="switcher-currency">
@@ -79,7 +86,7 @@
                                                 <div class="switcher-options">
                                                     <div class="switcher-currency-trigger">
                                                         <div class="setting__menu">
-                                                            <span><a href="#">我的账户</a></span>
+                                                            <span><a href="/bookstore/userpage">我的账户</a></span>
                                                             <span><a href="/bookstore/shoppingcart">我的购物车</a></span>
                                                             <span><a href="#">退出</a></span>
                                                         </div>

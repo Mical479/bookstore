@@ -8,7 +8,7 @@
         <result column="all_number" property="allNumber"/>
         <result column="create_time" property="createTime"/>
         <result column="pay_time" property="payTime"/>
-        <result column="alipay_no" property="alipayNo"/>
+        <result column="alipayNo" property="alipayNo"/>
         <result column="order_status" property="orderStatus"/>
         <!-- 一对一：association使用select属性引入另外一条SQL语句 -->
         <association property="bookUser" column="user_id" javaType="com.bookstore.pojo.BookUser">
@@ -38,6 +38,7 @@
 	    where p.user_id=b.user_id
 	    and p.order_id=#{orderId}
 	    and p.address_id = a.address_id
+	    order by p.create_time
 	</select>
 
     <!--根据使用者user_id查询订单列表详情-->

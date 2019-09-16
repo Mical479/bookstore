@@ -22,4 +22,21 @@ public interface AddressMapper {
      */
     List<Address> selectAddressByUser(@Param("userId") int userId, @Param("isDefault") int isDefault);
 
+    /**
+     * 插入用户地址
+     * @param address
+     */
+    void insertAddress(Address address);
+
+    /**
+     * 更新用户地址
+     * @param address
+     */
+    void updateAddress(Address address);
+
+    /**
+     * 删除地址
+     * @param address
+     */
+    void deleteAddress(Address address);
 }

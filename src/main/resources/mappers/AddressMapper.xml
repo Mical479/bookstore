@@ -11,4 +11,35 @@
         </if>
     </select>
 
+    <!--插入地址信息-->
+    <insert id="insertAddress" parameterType="com.bookstore.pojo.Address">
+        insert into address(user_id, receiver_name, receiver_phone, receiver_address, is_default)
+        values (#{userId}, #{receiverName}, #{receiverPhone}, #{receiverAddress}, #{isDefault})
+    </insert>
+
+    <!--更新地址信息-->
+    <update id="updateAddress" parameterType="com.bookstore.pojo.Address">
+        update address set
+        <trim suffixOverrides=",">
+            <if test="receiverName != null and receiverName != ''">
+                receiver_name = #{receiverName},
+            </if>
+            <if test="receiverPhone != null and receiverPhone != ''">
+                receiver_phone = #{receiverPhone},
+            </if>
+            <if test="receiverAddress != null and receiverAddress != ''">
+                receiver_address = #{receiverAddress},
+            </if>
+            <if test="isDefault != null">
+                is_default = #{isDefault},
+            </if>
+        </trim>
+        where user_id = #{userId}
+    </update>
+
+    <!--删除地址-->
+    <delete id="deleteAddress" parameterType="com.bookstore.pojo.Address">
+        delete from address where user_id = #{userId} and address_id = #{addressId}
+    </delete>
+
 </mapper>

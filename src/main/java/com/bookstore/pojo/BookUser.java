@@ -16,6 +16,15 @@ public class BookUser implements Serializable {
     private String userEmail;
     private String picture;
     private Date createTime;
+    private String userPhone;
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
 
     public int getUserId() {
         return userId;

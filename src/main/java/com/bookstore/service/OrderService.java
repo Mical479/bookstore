@@ -2,7 +2,9 @@ package com.bookstore.service;
 
 import com.bookstore.pojo.BookUser;
 import com.bookstore.pojo.OrderForm;
+import com.bookstore.vo.UserOrder;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -19,11 +21,17 @@ public interface OrderService {
      * @param user
      * @return
      */
-    OrderForm insertOrder(List<Integer> shopId, BookUser user);
+    OrderForm insertOrder(List<Integer> shopId, BookUser user, HttpServletRequest request);
 
     /**
      * 更新订单状态
      * @param orderForm
      */
     void updateOrder(OrderForm orderForm);
+
+    /**
+     * 根据用户id查找该用户的订单情况
+     * @return
+     */
+    List<UserOrder> getUserOrders(int userId);
 }

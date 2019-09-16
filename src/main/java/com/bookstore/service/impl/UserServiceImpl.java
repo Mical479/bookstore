@@ -39,4 +39,13 @@ public class UserServiceImpl implements UserService {
         bookUser.setCreateTime(new Date());
         userMapper.insertUser(bookUser);
     }
+
+    /**
+     * 更新用户信息
+     * @param bookUser
+     */
+    @Override
+    public void updateUser(BookUser bookUser) {
+        userMapper.updateUser(bookUser);
+    }
 }

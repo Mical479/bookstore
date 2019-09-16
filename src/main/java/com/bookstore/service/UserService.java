@@ -11,4 +11,5 @@ import com.bookstore.pojo.BookUser;
 public interface UserService {
     BookUser getUser(BookUser bookUser);
     void registerUser(BookUser bookUser);
+    void updateUser(BookUser bookUser);
 }

@@ -1,15 +1,14 @@
 package com.bookstore.service.impl;
 
-import com.bookstore.mapper.AddressMapper;
-import com.bookstore.mapper.OrderDetailsMapper;
-import com.bookstore.mapper.OrderFormMapper;
-import com.bookstore.mapper.ShopListMapper;
+import com.bookstore.mapper.*;
 import com.bookstore.pojo.*;
 import com.bookstore.service.OrderService;
+import com.bookstore.vo.UserOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,27 +35,34 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderFormMapper orderFormMapper;
 
+    @Autowired
+    private BookInfoMapper bookInfoMapper;
+
     /**
      * 根据购物车ID，和用户信息插入订单数据
+     *
      * @param shopId
      * @param user
      * @return
      */
     @Override
-    public OrderForm insertOrder(List<Integer> shopId, BookUser user) {
+    public OrderForm insertOrder(List<Integer> shopId, BookUser user, HttpServletRequest request) {
 
         //根据uuid和用户的id生成主键
         int i = UUID.randomUUID().hashCode();
         long orderId;
         if (i > 0) {
-            orderId = Long.parseLong("" + i + user.getUserId());
-        }else {
-            orderId = Long.parseLong("" + (-i) + user.getUserId());
+            orderId = i;
+        } else {
+            orderId = -i;
         }
-
 
         List<ShopList> shopLists = new ArrayList<>();
         int userId = user.getUserId();
+        List<Address> addresses = addressMapper.selectAddressByUser(userId, 1);
+        if (addresses == null || addresses.size() == 0) {
+            return null;
+        }
 
         Double allCost = 0.0;
         int allNumber = 0;
@@ -86,6 +92,10 @@ public class OrderServiceImpl implements OrderService {
             allNumber += bookNumber;
         }
 
+        HttpSession session = request.getSession();
+        int shoppingNumbers = (int) session.getAttribute("shoppingNumbers");
+        session.setAttribute("shoppingNumbers", shoppingNumbers - allNumber);
+
         //构造一个订单表
         OrderForm orderForm = new OrderForm();
         orderForm.setOrderStatus(0);
@@ -95,8 +105,8 @@ public class OrderServiceImpl implements OrderService {
         orderForm.setBookUser(user);
         orderForm.setOrderId(orderId);
         //地址
-        List<Address> addresses = addressMapper.selectAddressByUser(userId, 1);
         orderForm.setAddress(addresses.get(0));
+
 
         orderFormMapper.insertForm(orderForm);
         return orderForm;
@@ -104,10 +114,42 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 更新订单状态
+     *
      * @param orderForm
      */
     @Override
     public void updateOrder(OrderForm orderForm) {
+        //减书籍的库存
+        List<OrderDetails> orderDetails = orderDetailsMapper.selectById(orderForm.getOrderId());
+        orderDetails.forEach(item -> {
+            int id = item.getBookInfo().getId();
+            Integer bookNumber = item.getBookNumber();
+            bookInfoMapper.updateBookStock(-bookNumber, id);
+        });
         orderFormMapper.updateForm(orderForm);
+    }
+
+
+    /**
+     * 用户查看订单
+     *
+     * @param userId 用户ID
+     * @return 返回给前端的用户包装列表
+     */
+    @Override
+    public List<UserOrder> getUserOrders(int userId) {
+
+        List<UserOrder> userOrders = new ArrayList<>();
+
+        List<OrderForm> orderForms = orderFormMapper.selectByUserId(userId);
+
+        orderForms.forEach(item -> {
+            UserOrder userOrder = new UserOrder();
+            List<OrderDetails> orderDetails = orderDetailsMapper.selectByOrderId(item.getOrderId());
+            userOrder.setOrderForm(item);
+            userOrder.setOrderDetails(orderDetails);
+            userOrders.add(userOrder);
+        });
+        return userOrders;
     }
 }

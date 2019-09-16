@@ -22,7 +22,14 @@
     <mvc:resources mapping="/fonts/**" location="fonts/" />
     <mvc:resources mapping="/images/**" location="images/" />
 
-    <!--<mvc:view-controller path="/" view-name="redirect:/index" />-->
+    <mvc:view-controller path="/" view-name="redirect:/index" />
     <!--<mvc:view-controller path="/index.jsp" view-name="redirect:/index" />-->
 
+    <!--文件上传-->
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+        <!--设定默认编码-->
+        <property name="defaultEncoding" value="UTF-8" />
+        <!--设定文件上传的最大值5MB-->
+        <property name="maxUploadSize" value="5120000" />
+    </bean>
 </beans>

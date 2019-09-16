@@ -46,4 +46,17 @@
     <select id="selectRandBooks" resultMap="book_info">
         select * from book_info order by RAND()
     </select>
+
+    <update id="updateBookStock">
+        update book_info set
+         <choose>
+             <when test="number > 0">
+                 book_stock = book_stock + #{number}
+             </when>
+             <otherwise>
+                 book_stock = book_stock #{number}
+             </otherwise>
+         </choose>
+        where id = #{id}
+    </update>
 </mapper>
