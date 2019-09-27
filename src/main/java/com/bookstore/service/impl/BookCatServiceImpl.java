@@ -3,6 +3,7 @@ package com.bookstore.service.impl;
 import com.bookstore.mapper.BookCatMapper;
 import com.bookstore.pojo.BookCat;
 import com.bookstore.service.BookCatService;
+import com.bookstore.vo.EUTreeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +61,33 @@ public class BookCatServiceImpl implements BookCatService {
         }
         list.remove(list.size() - 1);
         return list;
+    }
+
+    /**
+     * 查询父id为parentId的分类
+     * @param parentId 父id
+     * @return
+     */
+    @Override
+    public List<EUTreeNode> getCatList(int parentId) {
+
+        //查询出所有的分类信息
+        List<BookCat> parentCat = bookCatMapper.getParentCat(parentId, 0);
+
+        //包装成EUTreeNode
+        List<EUTreeNode> resultList = new ArrayList<>();
+        for (BookCat bookCat : parentCat) {
+            EUTreeNode node = new EUTreeNode();
+            node.setId(bookCat.getId());
+            node.setText(bookCat.getName());
+            if (bookCat.getIsParent() > 0)
+                node.setState("closed");
+            else
+                node.setState("open");
+            resultList.add(node);
+        }
+
+        return resultList;
     }
 
     /**

@@ -49,6 +49,18 @@
 	    where p.user_id=b.user_id
 	    and p.user_id=#{userId}
 	    and p.address_id = a.address_id
+	    and p.order_status = 1
+    </select>
+
+    <!--根据使用者user_id查询未完成订单列表详情-->
+    <select id="selectByUserIdFailed" parameterType="Integer"
+            resultMap="order_form">
+         SELECT p.*,b.*,a.*
+	    from order_form p,book_user b, address a
+	    where p.user_id=b.user_id
+	    and p.user_id=#{userId}
+	    and p.address_id = a.address_id
+	    and p.order_status = 0
     </select>
 
     <insert id="insertForm" parameterType="com.bookstore.pojo.OrderForm">

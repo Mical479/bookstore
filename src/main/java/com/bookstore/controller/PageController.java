@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -72,7 +74,16 @@ public class PageController {
      * @return
      */
     @RequestMapping("/single-product/{id}")
-    public ModelAndView getBookInfo(ModelAndView modelAndView, @PathVariable("id") int id){
+    public ModelAndView getBookInfo(ModelAndView modelAndView, @PathVariable("id") int id, HttpServletRequest request){
+        System.out.println(id+"=================================="+request.getContextPath());
+        Enumeration<String> headerNames = request.getHeaderNames();
+        //获取获取的消息头名称，获取对应的值，并输出
+        while(headerNames.hasMoreElements()){
+            String nextElement = headerNames.nextElement();
+            System.out.println(nextElement+":"+request.getHeader(nextElement));
+        }
+        System.out.println(request.getRequestURL());
+
         BookInfo myBook = bookInfoService.getBookById(id);
         List<BookInfo> newBooks = bookInfoService.getBooksByIndentify(1, 10);
         List<BookInfo> recommendBooks = bookInfoService.getBooksByIndentify(3, 10);

@@ -59,4 +59,9 @@
          </choose>
         where id = #{id}
     </update>
+
+    <insert id="insertBookInfo" parameterType="com.bookstore.pojo.BookInfo">
+        insert into book_info values (default , #{bookName}, #{bookDesc}, #{bookPrice}, #{bookAuthor}, #{bookPress}, #{bookDate}, #{bookImg},
+        #{bookCat.id}, #{bookIndentification}, #{bookStock})
+    </insert>
 </mapper>

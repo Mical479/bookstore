@@ -280,6 +280,7 @@
             <ul class="choise">
                 <li class="li1"><img src="/images/icons/caidan.png"><a href="#">基础设置</a></li>
                 <li><img src="/images/icons/dingdan.png"><a href="/bookstore/userpage/order">我的订单</a></li>
+                <li><img src="/images/icons/dingdan.png"><a href="/bookstore/userpage/failed-order">未完成订单</a></li>
                 <li><img src="/images/icons/myaddress.png"><a href="/bookstore/userpage/address">我的地址</a></li>
             </ul>
         </div>

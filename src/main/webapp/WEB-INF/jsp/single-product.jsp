@@ -166,7 +166,7 @@
                             <div class="col-lg-6 col-12">
                                 <div class="wn__fotorama__wrapper">
                                     <div class="fotorama wn__fotorama__action" data-nav="thumbs">
-                                        <a href="1.jpg"><img src="${myBook.bookImg}" alt=""></a>
+                                        <a href="#"><img src="${myBook.bookImg}" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -340,7 +340,7 @@
                                                         <ul class="add_to_links">
                                                             <li><a class="cart" href="#"></a></li>
                                                             <li><a class="wishlist" href="#"></a></li>
-                                                            <li><a class="compare" href="compare.jsp"></a></li>
+                                                            <li><a class="compare" href="#"></a></li>
                                                             <li><a data-toggle="modal" title="Quick View"
                                                                    class="quickview modal-view detail-link"
                                                                    href="#productmodal"></a></li>

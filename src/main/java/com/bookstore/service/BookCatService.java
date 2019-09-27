@@ -1,6 +1,7 @@
 package com.bookstore.service;
 
 import com.bookstore.pojo.BookCat;
+import com.bookstore.vo.EUTreeNode;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface BookCatService {
     List<BookCat> getRandomBookCats(int parentId, int count);
 
     List<BookCat> getAllDeepCatsById(int id);
+
+    List<EUTreeNode> getCatList(int parentId);
 }

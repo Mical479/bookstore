@@ -41,6 +41,7 @@ public enum CommonEnums {
     EMAIL_SEND_FAILED(30, "发送邮件出错"),
     EMAIL_SEND_SUCCESS(31, "发送邮件成功"),
     EMAIL_NOT_RIGHT(32, "邮箱格式不正确"),
+    INSERT_INTO_BOOK_SUCCESS(33, "新增书籍成功")
     ;
 
     private Integer code;

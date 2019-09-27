@@ -15,7 +15,8 @@ public interface BookCatMapper {
 
     /**
      * 根据父id获取相同级别下的分类
-     * @param parentId
+     * @param parentId 父id
+     * @param count 是否限制查询出的数量，0表示不限制，大于0表示限制
      * @return
      */
     List<BookCat> getParentCat(@Param("parentId") int parentId, @Param("count") int count);

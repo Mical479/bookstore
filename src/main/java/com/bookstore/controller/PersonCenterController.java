@@ -55,9 +55,28 @@ public class PersonCenterController {
             return modelAndView;
         }
         //查询用户订单并返回给前端
-        List<UserOrder> userOrders = orderService.getUserOrders(((BookUser) user).getUserId());
+        List<UserOrder> userOrders = orderService.getUserOrders(((BookUser) user).getUserId(), false);
         modelAndView.addObject("userOrder", userOrders);
         modelAndView.setViewName("userpage-order");
+        return modelAndView;
+    }
+
+    /**
+     * 个人中心未完成订单访问
+     * @param request
+     * @return
+     */
+    @RequestMapping("/bookstore/userpage/failed-order")
+    public ModelAndView getUserPageFailedOrder(HttpServletRequest request, ModelAndView modelAndView){
+        Object user = request.getSession().getAttribute("user");
+        if (!(user instanceof BookUser)){
+            modelAndView.setViewName("redirect:/index");
+            return modelAndView;
+        }
+        //查询用户订单并返回给前端
+        List<UserOrder> userOrders = orderService.getUserOrders(((BookUser) user).getUserId(), true);
+        modelAndView.addObject("userOrder", userOrders);
+        modelAndView.setViewName("userpage-failed-order");
         return modelAndView;
     }
 

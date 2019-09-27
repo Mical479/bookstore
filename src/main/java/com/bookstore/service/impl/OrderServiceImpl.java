@@ -9,10 +9,8 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 类 名 称：OrderServiceImpl
@@ -120,7 +118,8 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void updateOrder(OrderForm orderForm) {
         //减书籍的库存
-        List<OrderDetails> orderDetails = orderDetailsMapper.selectById(orderForm.getOrderId());
+        List<OrderDetails> orderDetails = orderDetailsMapper.selectByOrderId(orderForm.getOrderId());
+        System.out.println(orderDetails);
         orderDetails.forEach(item -> {
             int id = item.getBookInfo().getId();
             Integer bookNumber = item.getBookNumber();
@@ -137,11 +136,16 @@ public class OrderServiceImpl implements OrderService {
      * @return 返回给前端的用户包装列表
      */
     @Override
-    public List<UserOrder> getUserOrders(int userId) {
+    public List<UserOrder> getUserOrders(int userId, boolean isFailed) {
 
         List<UserOrder> userOrders = new ArrayList<>();
 
-        List<OrderForm> orderForms = orderFormMapper.selectByUserId(userId);
+        List<OrderForm> orderForms;
+
+        if (!isFailed)
+            orderForms = orderFormMapper.selectByUserId(userId);
+        else
+            orderForms = orderFormMapper.selectByUserIdFailed(userId);
 
         orderForms.forEach(item -> {
             UserOrder userOrder = new UserOrder();

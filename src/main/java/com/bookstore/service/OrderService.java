@@ -33,5 +33,6 @@ public interface OrderService {
      * 根据用户id查找该用户的订单情况
      * @return
      */
-    List<UserOrder> getUserOrders(int userId);
+    List<UserOrder> getUserOrders(int userId, boolean isFailed);
+
 }

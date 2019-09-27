@@ -14,6 +14,13 @@ public interface OrderFormMapper {
     List<OrderForm> selectByUserId(int userId);
 
     /**
+     * 根据用户userid获取未完成订单信息
+     * @param userId
+     * @return
+     */
+    List<OrderForm> selectByUserIdFailed(int userId);
+
+    /**
      * 根据order_id获取订单信息
      * @param orderId
      * @return

@@ -53,4 +53,10 @@ public interface BookInfoMapper {
      * @param id
      */
     void updateBookStock(@Param("number") int number, @Param("id") int id);
+
+    /**
+     * 插入书籍信息
+     * @param bookInfo
+     */
+    void insertBookInfo(BookInfo bookInfo);
 }
